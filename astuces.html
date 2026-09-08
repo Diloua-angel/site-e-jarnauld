@@ -1,564 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>E-JARNAULD SOFT — Astuces Informatiques</title>
-  <meta name="description" content="Astuces informatiques : raccourcis clavier, optimisation PC, sécurité et pannes courantes. Filtrage temps réel." />
-
-  <!-- Fonts -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-JARNAULD SOFT — Astuces Informatiques & Dépannage</title>
+  <meta name="description" content="Guides pratiques et astuces informatiques : raccourcis clavier essentiels, optimisation Windows/Mac, hygiène de sécurité et résolution de pannes courantes.">
   <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-/*
-  CSS CORRIGE (sans changer la structure HTML)
-  Objectif: lisibilité totale header/liens/cartes + hover/focus + z-index/overlays
-*/
-:root{
-  /* Harmoniser la couleur principale avec index.html */
-  --primary:#ff1a2d;
-  --primary2:#ee1c25;
-  --bg:#FFFFFF;
-  --text:#0B0B0F;
-  --muted:#4B5563;
-  --muted2:#6B7280;
-  --border:#E5E7EB;
-  --shadow: 0 10px 30px rgba(11,11,15,.08);
-  --radius:18px;
-  --radius2:24px;
-  --max:1180px;
-  --z-header:70;
-
-      --bg:#ffffff;
-      --text:#0b0b0f;
-      --muted:#4a4a57;
-      --muted2:#5e5959;
-      --border:rgba(14,14,20,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.12);
-      --radius:18px;
-      --radius2:24px;
-      --max:1180px;
-      --surface:#f6f7f9;
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-body{
-      margin:0;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(238,28,37,.14), transparent 55%),
-        radial-gradient(900px 500px at 85% 10%, rgba(238,28,37,.10), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.5;
-      overflow-x:hidden;
-    }
-
-a{ color:inherit; text-decoration:none; }
-a:focus-visible{ outline:2px solid rgba(238,28,37,.6); outline-offset:3px; border-radius:10px; }
-a:hover{ color:inherit; }
-a:visited{ color:inherit; }
-
-    img{ max-width:100%; display:block; }
-
-    .container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
-
-    /* Navbar */
-    .navbar{
-      position:fixed; top:0; left:0; right:0;
-    z-index:var(--z-header);
-      background: rgba(255,255,255,.95);
-      backdrop-filter: blur(0px);
-      border-bottom:1px solid rgba(229,231,235,.75);
-      transition: all .25s ease;
-    }
-    .navbar.is-scrolled{
-      background: rgba(255,255,255,.98);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-
-    .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
-    .brand-logo{
-      width:40px; 
-      height:40px; 
-      /*border-radius:12px;*/
-      border-radius: 0;
-      /*background: linear-gradient(145deg, rgba(238,28,37,.18), rgba(255,255,255,.04));*/
-      background: none;
-      /*border:1px solid rgba(238,28,37,.12);*/
-      border: none;
-      display:grid; place-items:center;
-      /*box-shadow: 0 14px 35px rgba(0,0,0,.20);
-      overflow:hidden; */
-      box-shadow: none;
-      overflow: visible;
-    }
-    .brand-logo img{ 
-      width:100%; 
-      height:100%; 
-      /*object-fit:cover; */
-      object-fit: contain;
-      /*filter:saturate(1.1) contrast(1.05); */
-      filter: none;
-    }
-    .brand-text{ min-width:0; }
-    .brand-name{
-      font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
-      font-weight:700;
-      letter-spacing:.2px;
-      font-size:15px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .brand-sub{ font-size:12px; color:var(--muted2); margin-top:2px; }
-
-    .nav-links{ display:none; align-items:center; gap:22px; }
-    .nav-links a{
-      color: rgba(17,17,17,.86) !important;
-      font-size:13px;
-      padding:10px 0;
-      position:relative;
-      font-weight:700;
-      letter-spacing:.1px;
-    }
-    .nav-links a::after{
-      content:'';
-      position:absolute; left:0; bottom:6px;
-      width:0; height:2px;
-      background: var(--primary);
-      transition: width .2s ease;
-    }
-    .nav-links a:hover::after{ width:100%; }
-    .nav-links a.is-active{ color: rgba(238,28,37,.98) !important; }
-    .nav-links a.is-active::after{ width:100%; }
-
-    .nav-actions{ display:flex; align-items:center; gap:10px; }
-
-    .btn{
-      border:1px solid rgba(255,255,255,.18);
-      background: transparent;
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:14px;
-      font-size:13px;
-      font-weight:600;
-      cursor:pointer;
-      transition: transform .15s ease, border-color .2s ease, background .2s ease, opacity .2s ease;
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn:active{ transform: translateY(1px); }
-    .btn:hover{ border-color: rgba(255,255,255,.28); }
-
-.btn-primary{
-      background: var(--primary2);
-      border-color: var(--primary2);
-      box-shadow: 0 10px 30px rgba(238,28,37,.18);
-      color:#FFFFFF;
-    }
-    .btn-primary:hover{ filter: brightness(0.98); }
-
-    .btn-ghost{ border-color: rgba(255,255,255,.28); }
-
-    .menu-toggle{
-      width:44px; height:44px;
-      display:grid; place-items:center;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.18);
-      background: rgba(0,0,0,.06);
-      cursor:pointer;
-    }
-      
-
-    /* Mobile drawer */
-    .drawer{
-      position:fixed; inset:0;
-      z-index:80;
-      background: rgba(0,0,0,.65);
-      backdrop-filter: blur(8px);
-      /* Important: garantir un rendu visible sur petit écran */
-      display:none;
-      opacity:0;
-      visibility:hidden;
-    }
-    .drawer.open{
-      display:block;
-      opacity:1;
-      visibility:visible;
-    }
-    .drawer-panel{
-      position:absolute; right:0; top:0; bottom:0;
-      width:min(360px, 92vw);
-      background: rgba(133, 98, 98, 0.92);
-      border-left:1px solid rgba(255,255,255,.10);
-      padding:18px;
-      display:flex; flex-direction:column; gap:16px;
-      transform: translateX(12px);
-    }
-    .drawer.open .drawer-panel{ animation: slideIn .2s ease forwards; }
-    @keyframes slideIn{ to { transform: translateX(0); } }
-
-    .drawer-top{ display:flex; align-items:center; justify-content:space-between; }
-    .drawer-links{ display:flex; flex-direction:column; gap:10px; padding-top:8px; }
-    .drawer-links a{
-      padding:12px 12px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.92);
-      font-weight:600;
-      font-size:14px;
-    }
-    .drawer-actions{ display:flex; flex-direction:column; gap:10px; }
-
-    /* Sections */
-    section{ padding:86px 0; }
-    .hero{ padding-top:110px; }
-
-    .section-title{
-      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-      font-size:34px;
-      letter-spacing:-.4px;
-      margin:0;
-    }
-    .section-sub{
-      color:var(--muted);
-      margin-top:12px;
-      font-size:15px;
-      max-width:68ch;
-    }
-
-    /* Reveal */
-    .reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.is-visible{ opacity:1; transform: translateY(0); }
-
-    html{ scroll-behavior:smooth; }
-
-    /* HERO */
-    .hero-grid{ display:grid; grid-template-columns:1fr; gap:18px; align-items:stretch; }
-    .hero-left{ padding:10px 0; }
-
-    .hero-kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(230, 9, 9, 0.12);
-      background: rgba(243, 108, 108, 0.03);
-      color: rgba(0, 0, 0, 0.92);
-      font-weight:800;
-      font-size:12px;
-      margin-bottom:18px;
-      white-space:nowrap;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--primary);
-      box-shadow: 0 0 0 6px rgba(238,28,37,.14);
-    }
-
-    .hero-title{
-      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-      font-size:44px;
-      line-height:1.05;
-      margin:0;
-      letter-spacing:-.6px;
-    }
-
-    .hero-desc{
-      margin-top:14px;
-      color: var(--muted);
-      font-size:16px;
-      max-width:62ch;
-      white-space:pre-line;
-    }
-
-    /* Search */
-    .search-row{ margin-top:18px; display:flex; justify-content:center; }
-    .search-wrap{ width:100%; max-width:600px; position:relative; }
-    .search-icon{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:18px; height:18px; opacity:.92; pointer-events:none; }
-    .search-input{
-      width:100%;
-      background: rgba(26,26,26,.75);
-      border:1px solid rgba(255,255,255,.10);
-      color:#fff;
-      border-radius:16px;
-      padding:14px 16px 14px 44px;
-      font-size:14px;
-      outline:none;
-      transition: border-color .15s ease, box-shadow .15s ease;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .search-input::placeholder{ color: rgba(255,255,255,.40); }
-    .search-input:focus{ border-color: rgba(238,28,37,.85); box-shadow: 0 0 0 4px rgba(238,28,37,.12); }
-
-    .hero-stats{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:center; }
-    .stat-chip{ border-radius:999px; padding:10px 14px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); font-weight:900; letter-spacing:.2px; font-size:13px; display:inline-flex; align-items:center; gap:10px; }
-    .stat-underline{ width:10px; height:10px; border-radius:50%; background: var(--primary); box-shadow: 0 0 0 6px rgba(238,28,37,.14); }
-
-    /* Filters */
-    .filters-wrap{ margin-top:26px; }
-    .filter-row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; }
-    .filter-btn{
-      border-radius:999px;
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: #1a1a1a;
-      color: rgba(255,255,255,.72);
-      font-weight:900;
-      font-size:13px;
-      cursor:pointer;
-      transition: background .25s ease, border-color .25s ease, transform .15s ease, opacity .25s ease, color .25s ease;
-      user-select:none;
-      opacity:1;
-    }
-    .filter-btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.22); }
-    .filter-btn.is-active{ background: rgba(238,28,37,.15); border-color: rgba(238,28,37,.55); color: rgba(255,220,225,.98); }
-
-    /* Sections layout */
-    .container section{ padding:0; }
-
-    /* Section 1 (raccourcis) */
-    .heading-with-icon{ display:flex; align-items:center; gap:12px; }
-    .heading-with-icon .icon{ width:44px; height:44px; border-radius:18px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); display:grid; place-items:center; flex:0 0 auto; }
-
-    .prod-badge{ width:fit-content; display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background: rgba(238,28,37,.12); border:1px solid rgba(238,28,37,.35); color: rgba(0, 0, 0, 0.98); font-weight:900; font-size:12px; letter-spacing:.2px; margin-top:8px; }
-
-    .table-shell{ margin-top:18px; border-radius: var(--radius2); border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); overflow:hidden; }
-    .table-head{ display:flex; gap:12px; padding:14px 16px; background: rgba(255,255,255,.03); border-bottom:1px solid rgba(255,255,255,.08); font-weight:1000; color: rgba(255,255,255,.90); font-size:13px; }
-    .table-row{
-      display:flex;
-      gap:12px;
-      padding:12px 16px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-      align-items:flex-start;
-      font-size:14px;
-      color: rgba(255,255,255,.92);
-      transition: opacity .25s ease, transform .25s ease;
-    }
-    .table-row:last-child{ border-bottom:0; }
-    .table-row[data-hidden="true"]{ opacity:0; transform: translateY(10px); pointer-events:none; height:0; overflow:hidden; padding:0 16px; border-bottom:0; }
-    .col1{ flex: 0 0 210px; }
-    .col2{ flex: 1 1 auto; }
-    .col3{ flex: 0 0 140px; }
-
-    .key-touch{ display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .key-badge{ background: #1f1f1f; border:1px solid rgba(255,255,255,.10); color: rgba(255,255,255,.95); padding:10px 12px; border-radius:16px; font-weight:1000; letter-spacing:.2px; font-size:13px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.25); }
-    .plus{ color: rgba(255,255,255,.55); font-weight:1000; padding:0 2px; }
-    .system-pill{ display:inline-flex; align-items:center; gap:10px; padding:9px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); color: rgba(255,255,255,.86); font-weight:900; font-size:12.5px; white-space:nowrap; }
-
-    /* Section 2 */
-    .section2-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-
-    .opt-grid{ margin-top:18px; display:grid; grid-template-columns:1fr; gap:14px; }
-
-    .opt-card{
-      border-radius: var(--radius2);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.11);
-      padding:18px;
-      position:relative;
-      overflow:hidden;
-      transition: transform .18s ease, border-color .2s ease;
-      display:flex;
-      flex-direction:column;
-      min-height: 300px;
-    }
-    .opt-card::after{
-      content:'';
-      position:absolute;
-      inset:auto -60px -80px auto;
-      width:180px;
-      height:180px;
-      background: radial-gradient(circle at 30% 30%, rgba(238,28,37,.35), transparent 60%);
-      opacity:.18;
-      pointer-events:none;
-    }
-    .opt-card > *{ position:relative; z-index:1; }
-    .opt-card:hover{ transform: translateY(-2px); border-color: rgba(238,28,37,.35); }
-
-    .opt-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
-.opt-icon{ width:44px; height:44px; border-radius:18px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); display:grid; place-items:center; flex:0 0 auto; overflow:hidden; }
-    .opt-icon svg{ width:100%; height:100%; display:block; }
-    .opt-icon path{ vector-effect: non-scaling-stroke; }
-
-    .opt-title{ margin:14px 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px; font-weight:1000; }
-    .opt-desc{ color: var(--muted); font-size:14px; margin:0; line-height:1.6; white-space:pre-line; }
-
-    .level-badge{ display:inline-flex; align-items:center; gap:10px; padding:7px 10px; border-radius:999px; font-weight:1000; font-size:12px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color: rgba(255,255,255,.92); white-space:nowrap; }
-    .level-dot{ width:10px; height:10px; border-radius:50%; background: currentColor; box-shadow: 0 0 0 6px rgba(238,28,37,.10); }
-    .level-beginner{ color:#2eea4e; border-color: rgba(46,234,78,.35); background: rgba(46,234,78,.08); }
-    .level-intermediate{ color:#ffb020; border-color: rgba(255,176,32,.35); background: rgba(255,176,32,.10); }
-    .level-advanced{ color:#ee1c25; border-color: rgba(238,28,37,.35); background: rgba(238,28,37,.10); }
-
-    .opt-steps{ margin-top:auto; padding-top:16px; border-top:1px dashed rgba(255,255,255,.12); display:flex; flex-direction:column; gap:10px; }
-    .steps-toggle{ width:fit-content; background: transparent; border:1px solid rgba(255,255,255,.12); color: rgba(122, 106, 106, 0.92); padding:10px 12px; border-radius:14px; font-weight:1000; font-size:13px; cursor:pointer; display:inline-flex; align-items:center; gap:10px; transition: border-color .2s ease, transform .18s ease; }
-    .steps-toggle:hover{ border-color: rgba(238,28,37,.35); transform: translateY(-1px); }
-    .steps-panel{ max-height:0; overflow:hidden; transition: max-height .28s ease, opacity .25s ease; opacity:0; }
-    .steps-panel[data-open="true"]{ max-height:520px; opacity:1; }
-    .step-list{ margin:0; padding:10px 0 0; list-style:none; display:flex; flex-direction:column; gap:10px; }
-    .step{ display:flex; gap:12px; align-items:flex-start; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); }
-    .step-num{ width:34px; height:34px; border-radius:14px; border:1px solid rgba(238,28,37,.35); background: rgba(238,28,37,.10); color: rgba(255,220,225,.98); font-weight:1000; display:grid; place-items:center; flex:0 0 auto; }
-    .step-text{ color: rgba(41, 40, 40, 0.9); font-weight:850; font-size:13.5px; line-height:1.45; }
-
-    /* Footer (premium refonte identique à index.html) */
-    footer{ padding:44px 0 26px; border-top:1px solid rgba(255,255,255,.08); }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
-    }
-
-    .footer-brand{ display:flex; flex-direction:column; gap:12px; }
-    .footer-brand .logo-row{ display:flex; align-items:center; gap:12px; }
-    .footer-slogan{ color: var(--muted); font-size:14px; max-width:52ch; line-height:1.5; }
-
-    .footer-quick{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-
-    .footer-col{
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.02);
-      border:1px solid rgba(229,231,235,.50);
-      padding:14px;
-    }
-
-    .footer-col h4{
-      margin:0;
-      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-      font-weight:1000;
-      letter-spacing:-.2px;
-      font-size:14px;
-      color: rgba(17,17,17,.92);
-    }
-
-    .footer-list{ margin:12px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
-    .footer-list a{
-      color: var(--muted);
-      font-size:14px;
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .footer-list a:hover{ color: var(--primary2); }
-
-    .footer-social{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:6px;
-    }
-
-    .social{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(229,231,235,.95);
-      background: rgba(255,255,255,.65);
-      font-weight:900;
-      font-size:13px;
-      color: rgba(17,17,17,.92) !important;
-      z-index: 5;
-      position: relative;
-    }
-    .social svg{ display:block; }
-    .social svg path{ stroke: rgba(17,17,17,.92) !important; }
-    .social:hover{
-      background: rgba(112,112,112, 0.96) !important;
-      border-color: rgba(87, 86, 86, 0.96) !important;
-      color: #ffffff !important;
-    }
-    .social:hover svg path{ stroke: #ffffff !important; }
-
-    .copyright{ margin-top:22px; color: var(--muted2); font-size:13px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
-    .foot-links{ display:flex; gap:16px; flex-wrap:wrap; }
-
-
-    @media (min-width: 820px){
-      .nav-links{ display:flex; }
-      .menu-toggle{ display:none; }
-      .hero-grid{ grid-template-columns: 1.1fr .9fr; gap:22px; }
-      .opt-grid{ grid-template-columns: repeat(3, 1fr); }
-      .col1{ flex-basis: 260px; }
-      .col3{ flex-basis: 160px; }
-
-      footer{ padding:32px 0 22px; }
-      .footer-grid{ grid-template-columns: 1.05fr 1fr; align-items:start; }
-      .footer-quick{ grid-template-columns: repeat(3, 1fr); }
-      .footer-col{ }
-    }
-
-
-    @media (max-width: 819px){
-      .opt-grid{ grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 520px){
-      .opt-grid{ grid-template-columns: 1fr; }
-      .table-head{ display:none; }
-      .table-row{ padding:12px 12px; }
-      .col1, .col2, .col3{ flex: 1 1 auto; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .reveal{ transition:none; }
-      .steps-panel{ transition:none; }
-    }
-  </style>
+  <!-- Stylesheet unifiée -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar" id="top">
+
+  <!-- Navbar Fixe -->
+  <header class="navbar">
     <div class="container">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="E-JARNAULD SOFT">
-          <div class="brand-logo" aria-hidden="true">
-            <img src="./logo1.png" alt="">
+        <a class="brand" href="index.html" aria-label="E-JARNAULD SOFT">
+          <div class="brand-logo">
+            <img src="logo.png" alt="E-JARNAULD SOFT Logo">
           </div>
           <div class="brand-text">
-            <div class="brand-name">E-Jarnauld Soft</div>
-            <div class="brand-sub">Solutions Informatiques</div>
+            <span class="brand-name">E-JARNAULD SOFT</span>
+            <span class="brand-sub">Solutions Informatiques</span>
           </div>
         </a>
 
-        <nav class="nav-links" aria-label="Navigation principale">
-          <a data-i18n-link="accueil" href="index.html">Accueil</a>
-          <a data-i18n-link="apropos" href="about.html">À Propos</a>
-          <a data-i18n-link="services" href="services.html">Services</a>
-          <a data-i18n-link="actualites" href="actualites.html">Actualités</a>
-          <a data-i18n-link="astuces" href="astuces.html" class="is-active">Astuces</a>
-          <a data-i18n-link="contact" href="contact.html">Contact</a>
+        <nav aria-label="Navigation principale">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link" data-i18n-link="accueil">Accueil</a></li>
+            <li><a href="about.html" class="nav-link" data-i18n-link="apropos">À Propos</a></li>
+            <li><a href="services.html" class="nav-link" data-i18n-link="services">Services</a></li>
+            <li><a href="actualites.html" class="nav-link" data-i18n-link="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="nav-link is-active" data-i18n-link="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="nav-link" data-i18n-link="contact">Contact</a></li>
+          </ul>
         </nav>
 
         <div class="nav-actions">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <button type="button" class="btn btn-ghost" data-lang-toggle="fr" aria-pressed="true">FR</button>
-            <button type="button" class="btn btn-ghost" data-lang-toggle="en" aria-pressed="false">EN</button>
+          <div class="lang-switcher" aria-label="Sélecteur de langue">
+            <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
           </div>
-          <a class="btn btn-primary" href="contact.html" aria-label="Demander un Devis">Demander un Devis</a>
-          <button class="menu-toggle" type="button" id="menuToggle" aria-label="Ouvrir le menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M4 7H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 12H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 17H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
+          <a href="contact.html" class="btn btn-primary" data-i18n="devis">Demander un devis</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
         </div>
@@ -566,696 +60,227 @@ a:visited{ color:inherit; }
     </div>
   </header>
 
-  <!-- Drawer -->
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="drawer-top">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div class="brand-logo" aria-hidden="true" style="width:36px;height:36px;border-radius:12px;">
-            <img src="./logo.png" alt="">
-          </div>
-          <div>
-            <div class="brand-name">E-Jarnauld Soft</div>
-            <div class="brand-sub">Solutions Informatiques</div>
-          </div>
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer" id="drawer" aria-label="Menu mobile">
+    <div class="drawer-header">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Logo">
         </div>
-<button class="menu-toggle" type="button" id="drawerClose" aria-label="Fermer le menu">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6 6L18 18" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-            <path d="M18 6L6 18" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
+        <div class="brand-text">
+          <span class="brand-name" style="color:#fff;">E-JARNAULD SOFT</span>
+          <span class="brand-sub">Solutions IT</span>
+        </div>
       </div>
-
-      <div class="drawer-links" aria-label="Liens">
-        <a href="index.html" data-drawer-link>Accueil</a>
-        <a href="about.html" data-drawer-link>À Propos</a>
-        <a href="services.html" data-drawer-link>Services</a>
-        <a href="actualites.html" data-drawer-link>Actualités</a>
-        <a href="astuces.html" data-drawer-link style="border-color:rgba(238,28,37,.55); background: rgba(238,28,37,.12);">Astuces</a>
-        <a href="contact.html" data-drawer-link>Contact</a>
+      <button class="drawer-close" id="drawerClose" aria-label="Fermer le menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" class="drawer-link" data-i18n-link="accueil">Accueil</a></li>
+      <li><a href="about.html" class="drawer-link" data-i18n-link="apropos">À Propos</a></li>
+      <li><a href="services.html" class="drawer-link" data-i18n-link="services">Services</a></li>
+      <li><a href="actualites.html" class="drawer-link" data-i18n-link="actualites">Actualités</a></li>
+      <li><a href="astuces.html" class="drawer-link is-active" data-i18n-link="astuces">Astuces</a></li>
+      <li><a href="contact.html" class="drawer-link" data-i18n-link="contact">Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <div class="lang-switcher" style="justify-content: center;">
+        <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
       </div>
-
-      <div class="drawer-actions">
-        <a class="btn btn-primary" href="contact.html">Demander un Devis</a>
-      </div>
-
-      <div style="margin-top:auto;color:var(--muted2);font-size:12px;">Basé à Douala, Cameroun.</div>
+      <a href="contact.html" class="btn btn-primary" style="width:100%; text-align:center;" data-i18n="devis">Demander un devis</a>
     </div>
   </div>
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="accueil">
+    <section class="hero">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-left">
-            <div class="hero-kicker reveal">
-              <span class="dot" aria-hidden="true"></span>
-              Base de Connaissances · Par nos Ingénieurs
-            </div>
-
-            <h1 class="hero-title reveal">Maîtrisez votre ordinateur.</h1>
-
-            <p class="hero-desc reveal">Astuces pratiques, raccourcis essentiels et solutions aux pannes
-courantes — rédigés par nos ingénieurs certifiés pour tous les niveaux.</p>
-
-            <div class="search-row reveal" aria-label="Recherche">
-              <div class="search-wrap">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="white" stroke-opacity=".85" stroke-width="2"/>
-                  <path d="M16.2 16.2 21 21" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <input id="searchInput" class="search-input" type="text" placeholder="Rechercher une astuce ou une panne..." autocomplete="off" />
-              </div>
-            </div>
-
-            <div class="hero-stats reveal" aria-label="Statistiques">
-              <div class="stat-chip">
-                <span class="stat-underline" aria-hidden="true"></span>
-                48 astuces · Mis à jour Juin 2026
-              </div>
-            </div>
-
-            <div class="filters-wrap reveal" aria-label="Filtres par catégorie">
-              <div class="filter-row" role="tablist">
-                <button type="button" class="filter-btn is-active" data-filter="Tous" aria-selected="true">Tous</button>
-                <button type="button" class="filter-btn" data-filter="Raccourcis Clavier" aria-selected="false">Raccourcis Clavier</button>
-                <button type="button" class="filter-btn" data-filter="Optimisation" aria-selected="false">Optimisation</button>
-                <button type="button" class="filter-btn" data-filter="Sécurité" aria-selected="false">Sécurité</button>
-                <button type="button" class="filter-btn" data-filter="Pannes & Dépannage" aria-selected="false">Pannes &amp; Dépannage</button>
-                <button type="button" class="filter-btn" data-filter="Réseau & Wi-Fi" aria-selected="false">Réseau &amp; Wi-Fi</button>
-                <button type="button" class="filter-btn" data-filter="Windows" aria-selected="false">Windows</button>
-                <button type="button" class="filter-btn" data-filter="macOS" aria-selected="false">macOS</button>
-              </div>
-            </div>
+        <div class="section-header reveal">
+          <div class="section-badge">
+            <span class="dot"></span>
+            <span>Base de Connaissances Utile</span>
           </div>
+          <h1 class="section-title">Astuces IT & <span class="text-primary">Guides de Dépannage</span></h1>
+          <p class="section-desc">
+            Améliorez votre productivité au quotidien et résolvez rapidement les blocages informatiques fréquents grâce à nos fiches pratiques.
+          </p>
+        </div>
 
-          <aside class="hero-card" aria-label="Résumé" style="display:none;"></aside>
+        <!-- Search Box -->
+        <div class="search-box reveal">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Rechercher une astuce (ex: raccourci, lent, wifi...)...">
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal">
+          <button class="filter-tab is-active" data-filter="all">Toutes les Astuces</button>
+          <button class="filter-tab" data-filter="shortcuts">Raccourcis Clavier</button>
+          <button class="filter-tab" data-filter="pc">Optimisation PC</button>
+          <button class="filter-tab" data-filter="security">Hygiène Cyber</button>
+          <button class="filter-tab" data-filter="network">Dépannage Réseau</button>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 1 — RACCOURCIS CLAVIER ESSENTIELS -->
-    <section id="raccourcis">
+    <!-- TIPS GRID -->
+    <section class="section section-surface" style="padding-top: 40px;">
       <div class="container">
-        <div class="heading-with-icon reveal">
-          <div class="icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 7h18v10H3V7Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M7 11h.01" stroke="#ee1c25" stroke-width="3" stroke-linecap="round"/>
-              <path d="M11 11h.01" stroke="#ee1c25" stroke-width="3" stroke-linecap="round"/>
-              <path d="M15 11h.01" stroke="#ee1c25" stroke-width="3" stroke-linecap="round"/>
-              <path d="M7 15h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h2 class="section-title" style="margin:0;">Raccourcis qui changent tout</h2>
-            <div class="prod-badge">Productivité</div>
-          </div>
-        </div>
-
-        <div class="table-shell reveal">
-          <div class="table-head">
-            <div class="col1">Raccourci</div>
-            <div class="col2">Action</div>
-            <div class="col3">Système</div>
+        <div class="card-grid">
+          <!-- Tip 1 -->
+          <div class="item-card reveal" data-category="shortcuts">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Raccourci</span>
+                <span>Productivité</span>
+              </div>
+              <h3 class="item-card-title">Raccourcis Clavier Pro qui Changent Tout</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Gagnez plusieurs minutes par jour en maîtrisant les combinaisons de touches magiques sous Windows et macOS (gestion des fenêtres, historique de presse-papier).</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Raccourcis Clavier Pro', '<h4>Top Raccourcis à Maîtriser</h4><ul style=\'margin-left:20px; margin-bottom:20px; line-height:1.8;\'><li><strong>Win + V :</strong> Ouvre l\'historique du presse-papier (copier-coller multiple).</li><li><strong>Win + Shift + S :</strong> Outil de capture d\'écran sélectif rapide.</li><li><strong>Ctrl + Shift + Esc :</strong> Ouvre directement le Gestionnaire des tâches.</li><li><strong>Win + L :</strong> Verrouille instantanément votre session de bureau.</li></ul>')">Voir les étapes &rarr;</button>
+              </div>
+            </div>
           </div>
 
-          <!-- 20 lignes -->
-          <!-- Windows (14) -->
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl c copier" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[C]</span></div></div>
-            <div class="col2">Copier le texte ou fichier sélectionné</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl v coller" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[V]</span></div></div>
-            <div class="col2">Coller</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl z annuler" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[Z]</span></div></div>
-            <div class="col2">Annuler la dernière action</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl y retablir" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[Y]</span></div></div>
-            <div class="col2">Rétablir l'action annulée</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl a tout selectionner" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[A]</span></div></div>
-            <div class="col2">Tout sélectionner</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows alt f4 fermer fenetre" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Alt]</span><span class="plus">+</span><span class="key-badge">[F4]</span></div></div>
-            <div class="col2">Fermer la fenêtre active</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows windows d bureau" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Windows]</span><span class="plus">+</span><span class="key-badge">[D]</span></div></div>
-            <div class="col2">Afficher/masquer le bureau</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows windows l verrouiller" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Windows]</span><span class="plus">+</span><span class="key-badge">[L]</span></div></div>
-            <div class="col2">Verrouiller la session</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows windows e explorateur" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Windows]</span><span class="plus">+</span><span class="key-badge">[E]</span></div></div>
-            <div class="col2">Ouvrir l'explorateur de fichiers</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl shift echap taches" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[Shift]</span><span class="plus">+</span><span class="key-badge">[Échap]</span></div></div>
-            <div class="col2">Ouvrir le gestionnaire des tâches</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows alt tab basculer" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Alt]</span><span class="plus">+</span><span class="key-badge">[Tab]</span></div></div>
-            <div class="col2">Basculer entre les fenêtres ouvertes</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows windows i parametres" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Windows]</span><span class="plus">+</span><span class="key-badge">[I]</span></div></div>
-            <div class="col2">Ouvrir les paramètres</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows f2 renommer" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[F2]</span></div></div>
-            <div class="col2">Renommer un fichier sélectionné</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="windows ctrl shift n nouveau dossier" data-hidden="false" data-system="Windows">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Ctrl]</span><span class="plus">+</span><span class="key-badge">[Shift]</span><span class="plus">+</span><span class="key-badge">[N]</span></div></div>
-            <div class="col2">Créer un nouveau dossier</div>
-            <div class="col3"><span class="system-pill">Windows</span></div>
+          <!-- Tip 2 -->
+          <div class="item-card reveal" data-category="pc">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Optimisation</span>
+                <span>Windows 10 / 11</span>
+              </div>
+              <h3 class="item-card-title">Booster les Performances d'un PC LENT</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Votre ordinateur met plusieurs minutes à démarrer ? Suivez ces 4 étapes simples pour libérer la mémoire RAM et nettoyer les fichiers temporaires.</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Booster un PC Lent', '<h4>Étapes de Nettoyage Rapide</h4><ol style=\'margin-left:20px; margin-bottom:20px; line-height:1.8;\'><li>Désactivez les programmes inutiles au démarrage (Gestionnaire des tâches &gt; Démarrage).</li><li>Nettoyez le disque : tapez <code>cleanmgr</code> dans la recherche Windows.</li><li>Désinstallez les bloatwares et logiciels d\'évaluation inutiles.</li><li>Vérifiez la santé de votre disque SSD (un SSD saturé à 95% ralentit le système).</li></ol>')">Voir les étapes &rarr;</button>
+              </div>
+            </div>
           </div>
 
-          <!-- macOS (6) -->
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="macos cmd espace spotlight" data-hidden="false" data-system="macOS">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Cmd]</span><span class="plus">+</span><span class="key-badge">[Espace]</span></div></div>
-            <div class="col2">Ouvrir Spotlight (recherche)</div>
-            <div class="col3"><span class="system-pill">macOS</span></div>
+          <!-- Tip 3 -->
+          <div class="item-card reveal" data-category="security">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Sécurité</span>
+                <span>Mot de passe</span>
+              </div>
+              <h3 class="item-card-title">Créer un Mot de Passe Inviolable et Mémorisable</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Fini les mots de passe oubliés ou trop simples. Découvrez la méthode de la "phrasemot" recommandée par les experts en cybersécurité.</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Méthode de la Phrasemot', '<h4>Comment créer une phrasemot forte :</h4><p style=\'margin:12px 0;\'>Au lieu de choisir un seul mot complexe comme <i>P@ssw0rd!</i>, prenez une phrase personnelle et associez la première lettre de chaque mot avec des chiffres et symboles.</p><p style=\'background:#f1f5f9; padding:12px; border-radius:8px;\'>Exemple : <strong>"J\'habite à Douala au Cameroun depuis 2020 !"</strong> &rarr; <code>J\'h@DaCdp2020!</code></p>')">Voir la méthode &rarr;</button>
+              </div>
+            </div>
           </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="macos cmd tab basculer apps" data-hidden="false" data-system="macOS">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Cmd]</span><span class="plus">+</span><span class="key-badge">[Tab]</span></div></div>
-            <div class="col2">Basculer entre les applications</div>
-            <div class="col3"><span class="system-pill">macOS</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="macos cmd q quitter app" data-hidden="false" data-system="macOS">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Cmd]</span><span class="plus">+</span><span class="key-badge">[Q]</span></div></div>
-            <div class="col2">Quitter une application</div>
-            <div class="col3"><span class="system-pill">macOS</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="macos cmd option echap forcer" data-hidden="false" data-system="macOS">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Cmd]</span><span class="plus">+</span><span class="key-badge">[Option]</span><span class="plus">+</span><span class="key-badge">[Échap]</span></div></div>
-            <div class="col2">Forcer la fermeture d'une app</div>
-            <div class="col3"><span class="system-pill">macOS</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="macos cmd shift 4 capture zone" data-hidden="false" data-system="macOS">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Cmd]</span><span class="plus">+</span><span class="key-badge">[Shift]</span><span class="plus">+</span><span class="key-badge">[4]</span></div></div>
-            <div class="col2">Capture d'écran d'une zone</div>
-            <div class="col3"><span class="system-pill">macOS</span></div>
-          </div>
-          <div class="table-row tip-card" data-category="Raccourcis Clavier" data-search="macos cmd c copier" data-hidden="false" data-system="macOS">
-            <div class="col1"><div class="key-touch"><span class="key-badge">[Cmd]</span><span class="plus">+</span><span class="key-badge">[C]</span></div></div>
-            <div class="col2">Copier</div>
-            <div class="col3"><span class="system-pill">macOS</span></div>
+
+          <!-- Tip 4 -->
+          <div class="item-card reveal" data-category="network">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Dépannage</span>
+                <span>Réseau Wi-Fi</span>
+              </div>
+              <h3 class="item-card-title">Réseau Wi-Fi Connecté sans Accès Internet ?</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Problème fréquent d'adressage IP ou de DNS. Voici la séquence de commandes Invite de commande (CMD) pour réinitialiser votre carte réseau.</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Réinitialiser le Réseau Wi-Fi', '<h4>Séquence de Réinitialisation CMD :</h4><p style=\'margin:12px 0;\'>Ouvrez l\'Invite de commandes (CMD) en tant qu\'administrateur et exécutez ces lignes :</p><pre style=\'background:#09090b; color:#fff; padding:16px; border-radius:8px; font-size:0.85rem;\'>ipconfig /flushdns\nnetsh winsock reset\nnetsh int ip reset</pre><p style=\'margin-top:12px;\'>Redémarrez ensuite votre ordinateur pour valider la reconnexion.</p>')">Voir les commandes &rarr;</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2 — OPTIMISATION -->
-    <section id="optimisation">
-      <div class="container">
-        <div class="section2-top reveal">
-          <div>
-            <div class="heading-with-icon">
-              <div class="icon" aria-hidden="true" style="width:44px;height:44px;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 13C4 7.477 8.477 3 14 3H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M20 3V9" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4 13V20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4 20H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M9 16L11 18L15 14" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div>
-                <h2 class="section-title" style="margin:0;">Boostez les performances de votre PC</h2>
-                <div class="prod-badge">Optimisation</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="opt-grid">
-          <!-- Card 1 -->
-          <article class="opt-card reveal" data-category="Optimisation" data-search="desactiver programmes demarrage" data-hidden="false">
-            <div class="opt-head">
-              <div class="opt-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 11.5V18C21 19.657 19.657 21 18 21H6C4.343 21 3 19.657 3 18V6C3 4.343 4.343 3 6 3H12.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M16 3L21 8" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="level-badge level-beginner"><span class="level-dot" aria-hidden="true"></span>Débutant</div>
-            </div>
-            <h3 class="opt-title">Désactiver les programmes au démarrage</h3>
-            <p class="opt-desc">De nombreux logiciels se lancent automatiquement au démarrage
-              et ralentissent votre PC. Les désactiver peut réduire le temps de
-              prédémarrage et améliorer la fluidité.</p>
-
-            <div class="opt-steps">
-              <button class="steps-toggle" type="button" aria-expanded="false" aria-controls="steps-1">Voir les étapes ↓</button>
-              <div class="steps-panel" id="steps-1" data-open="false" aria-hidden="true">
-                <ul class="step-list">
-                  <li class="step"><div class="step-num">1</div><div class="step-text">Appuyez sur Ctrl + Shift + Échap pour ouvrir le Gestionnaire des tâches.</div></li>
-                  <li class="step"><div class="step-num">2</div><div class="step-text">Cliquez sur l'onglet « Démarrage ».</div></li>
-                  <li class="step"><div class="step-num">3</div><div class="step-text">Faites un clic droit sur les programmes non essentiels.</div></li>
-                  <li class="step"><div class="step-num">4</div><div class="step-text">Sélectionnez « Désactiver ».</div></li>
-                  <li class="step"><div class="step-num">5</div><div class="step-text">Redémarrez votre ordinateur.</div></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="opt-card reveal" data-category="Optimisation" data-search="vider cache fichiers temporaires" data-hidden="false">
-            <div class="opt-head">
-              <div class="opt-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 7H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M6 7V20C6 21.105 6.895 22 8 22H16C17.105 22 18 21.105 18 20V7" stroke="white" stroke-width="2"/>
-                  <path d="M10 11H14" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M10 15H14" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M9 3H15" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="level-badge level-beginner"><span class="level-dot" aria-hidden="true"></span>Débutant</div>
-            </div>
-            <h3 class="opt-title">Vider le cache et les fichiers temporaires</h3>
-            <p class="opt-desc">Les fichiers temporaires s'accumulent et occupent
-              inutilement votre stockage. Un nettoyage régulier peut
-              libérer de l'espace, réduire les lenteurs et éviter certains
-              conflits d'applications.</p>
-
-            <div class="opt-steps">
-              <button class="steps-toggle" type="button" aria-expanded="false" aria-controls="steps-2">Voir les étapes ↓</button>
-              <div class="steps-panel" id="steps-2" data-open="false" aria-hidden="true">
-                <ul class="step-list">
-                  <li class="step"><div class="step-num">1</div><div class="step-text">Ouvrez les Paramètres et allez dans « Système » → « Stockage ».</div></li>
-                  <li class="step"><div class="step-num">2</div><div class="step-text">Choisissez « Fichiers temporaires ».</div></li>
-                  <li class="step"><div class="step-num">3</div><div class="step-text">Cochez les éléments à supprimer (cache, miniatures, téléchargements temporaires).</div></li>
-                  <li class="step"><div class="step-num">4</div><div class="step-text">Cliquez sur « Supprimer » et laissez terminer l’opération.</div></li>
-                  <li class="step"><div class="step-num">5</div><div class="step-text">Redémarrez si des changements semblent incomplets.</div></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="opt-card reveal" data-category="Optimisation" data-search="nettoyage disque mise à jour pilotes" data-hidden="false">
-            <div class="opt-head">
-              <div class="opt-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M8.5 13.5L10.5 15.5L15.5 10.5" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="level-badge level-intermediate"><span class="level-dot" aria-hidden="true"></span>Intermédiaire</div>
-            </div>
-            <h3 class="opt-title">Mettre à jour pilotes et système</h3>
-            <p class="opt-desc">Des pilotes obsolètes peuvent provoquer des pannes
-              ou des baisses de performance (latence, surchauffe,
-              ralentissements). Garder Windows et les drivers à jour
-              stabilise l’expérience et améliore l’efficacité.</p>
-
-            <div class="opt-steps">
-              <button class="steps-toggle" type="button" aria-expanded="false" aria-controls="steps-3">Voir les étapes ↓</button>
-              <div class="steps-panel" id="steps-3" data-open="false" aria-hidden="true">
-                <ul class="step-list">
-                  <li class="step"><div class="step-num">1</div><div class="step-text">Ouvrez « Windows Update » et lancez la recherche de mises à jour.</div></li>
-                  <li class="step"><div class="step-num">2</div><div class="step-text">Installez les mises à jour recommandées (pilotes inclus si proposés).</div></li>
-                  <li class="step"><div class="step-num">3</div><div class="step-text">Vérifiez aussi le Gestionnaire de périphériques pour les composants à risque.</div></li>
-                  <li class="step"><div class="step-num">4</div><div class="step-text">Redémarrez après installation.</div></li>
-                  <li class="step"><div class="step-num">5</div><div class="step-text">Surveillez 24h : température, stabilité, temps de lancement.</div></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 4 -->
-          <article class="opt-card reveal" data-category="Optimisation" data-search="désactiver effets visuels économiser ressources" data-hidden="false">
-            <div class="opt-head">
-              <div class="opt-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 13L10 7L14 11L20 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M20 13V20H4V13" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="level-badge level-intermediate"><span class="level-dot" aria-hidden="true"></span>Intermédiaire</div>
-            </div>
-            <h3 class="opt-title">Optimiser les effets visuels</h3>
-            <p class="opt-desc">Les animations et effets graphiques peuvent consommer
-              beaucoup de ressources. En réduisant certains effets,
-              vous gagnez en fluidité, surtout sur les PC à config
-              moyenne ou vieillissante.</p>
-
-            <div class="opt-steps">
-              <button class="steps-toggle" type="button" aria-expanded="false" aria-controls="steps-4">Voir les étapes ↓</button>
-              <div class="steps-panel" id="steps-4" data-open="false" aria-hidden="true">
-                <ul class="step-list">
-                  <li class="step"><div class="step-num">1</div><div class="step-text">Tapez « Performances » dans la recherche Windows.</div></li>
-                  <li class="step"><div class="step-num">2</div><div class="step-text">Ouvrez « Ajuster l’apparence et les performances de Windows ».</div></li>
-                  <li class="step"><div class="step-num">3</div><div class="step-text">Choisissez « Ajuster afin d’obtenir les meilleures performances ».</div></li>
-                  <li class="step"><div class="step-num">4</div><div class="step-text">Appliquez et testez le démarrage + ouverture des applications.</div></li>
-                  <li class="step"><div class="step-num">5</div><div class="step-text">Si besoin, réactivez uniquement les effets indispensables.</div></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 5 -->
-          <article class="opt-card reveal" data-category="Optimisation" data-search="planifier defrag mettre en veille" data-hidden="false">
-            <div class="opt-head">
-              <div class="opt-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 7H17V17H7V7Z" stroke="white" stroke-width="2"/>
-                  <path d="M4 4H20V20H4V4Z" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M9 12H15" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="level-badge level-advanced"><span class="level-dot" aria-hidden="true"></span>Avancé</div>
-            </div>
-            <h3 class="opt-title">Planifier la maintenance (défragmentation/veille)</h3>
-            <p class="opt-desc">Une maintenance régulière évite la fragmentation et
-              améliore le temps d’accès disque. Sur SSD, la logique est
-              différente : l’objectif est d’optimiser sans dégrader.</p>
-
-            <div class="opt-steps">
-              <button class="steps-toggle" type="button" aria-expanded="false" aria-controls="steps-5">Voir les étapes ↓</button>
-              <div class="steps-panel" id="steps-5" data-open="false" aria-hidden="true">
-                <ul class="step-list">
-                  <li class="step"><div class="step-num">1</div><div class="step-text">Vérifiez si votre disque est un SSD ou un HDD.</div></li>
-                  <li class="step"><div class="step-num">2</div><div class="step-text">Sur HDD, planifiez une défragmentation périodique.</div></li>
-                  <li class="step"><div class="step-num">3</div><div class="step-text">Sur SSD, privilégiez les réglages d’optimisation automatique.</div></li>
-                  <li class="step"><div class="step-num">4</div><div class="step-text">Activez une mise en veille propre pour limiter les ressources inutiles.</div></li>
-                  <li class="step"><div class="step-num">5</div><div class="step-text">Surveillez les performances après chaque cycle de maintenance.</div></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 6 -->
-          <article class="opt-card reveal" data-category="Optimisation" data-search="surveiller stockage ram lancer startup programs" data-hidden="false">
-            <div class="opt-head">
-              <div class="opt-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 19V5C4 3.895 4.895 3 6 3H18C19.105 3 20 3.895 20 5V19C20 20.105 19.105 21 18 21H6C4.895 21 4 20.105 4 19Z" stroke="white" stroke-width="2"/>
-                  <path d="M8 8H16" stroke="#ee1c25" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M8 12H13" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M8 16H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="level-badge level-beginner"><span class="level-dot" aria-hidden="true"></span>Débutant</div>
-            </div>
-            <h3 class="opt-title">Surveiller le stockage et la RAM</h3>
-            <p class="opt-desc">Quand le disque se remplit ou que la RAM sature,
-              Windows ralentit. En identifiant les applications
-              consommatrices (et en libérant l’espace), vous réduisez
-              les blocages et les temps d’attente.</p>
-
-            <div class="opt-steps">
-              <button class="steps-toggle" type="button" aria-expanded="false" aria-controls="steps-6">Voir les étapes ↓</button>
-              <div class="steps-panel" id="steps-6" data-open="false" aria-hidden="true">
-                <ul class="step-list">
-                  <li class="step"><div class="step-num">1</div><div class="step-text">Ouvrez « Gestionnaire des tâches » (Ctrl + Shift + Échap).</div></li>
-                  <li class="step"><div class="step-num">2</div><div class="step-text">Vérifiez « Mémoire » pour identifier les applications gourmands.</div></li>
-                  <li class="step"><div class="step-num">3</div><div class="step-text">Allez dans « Stockage » et libérez l’espace (temp, téléchargements, doublons).</div></li>
-                  <li class="step"><div class="step-num">4</div><div class="step-text">Désinstallez ou mettez à jour les logiciels qui consomment trop.</div></li>
-                  <li class="step"><div class="step-num">5</div><div class="step-text">Refaites un test : lancement, ouverture, navigation.</div></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ancrages (pour compat navbar) -->
-    <section id="apropos" style="padding:0; height:0; overflow:hidden;"></section>
-    <section id="services" style="padding:0; height:0; overflow:hidden;"></section>
-    <section id="actualites" style="padding:0; height:0; overflow:hidden;"></section>
-
-    <section id="contact" style="padding-top:30px; padding-bottom:30px;">
-      <div class="container">
-        <div class="reveal" style="border:1px solid rgba(255,255,255,.10);border-radius:var(--radius2);background:rgba(255,255,255,.03);padding:18px;">
-          <h2 class="section-title" style="font-size:24px;">Contact</h2>
-          <p class="section-sub" style="margin-top:10px;">Utilisez les boutons de la navigation pour initier une demande. (Action à relier à votre formulaire/contact.)</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;">
-            <a class="btn btn-primary" href="contact.html">Demander un Devis</a>
-            <a class="btn btn-ghost" href="https://wa.me/237654749357">Appeler / WhatsApp</a>
-          </div>
-        </div>
+    <!-- BANNER -->
+    <section class="section section-dark" style="text-align: center;">
+      <div class="container" style="max-width: 700px;">
+        <h2 class="section-title" style="color: #fff;">Un Problème Informatique Persistant ?</h2>
+        <p class="section-desc" style="color: #9CA3AF; margin-bottom: 30px;">
+          Nos techniciens interviennent sur site à Douala ou à distance pour dépanner rapidement vos équipements.
+        </p>
+        <a href="contact.html" class="btn btn-primary" style="padding: 14px 28px;" data-i18n="contact">Demander une Intervention</a>
       </div>
     </section>
   </main>
 
-  <!-- Footer (premium refonte identique à index.html) -->
-  <footer>
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Titre</h3>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Pied de page unifié -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Col 1 -->
-        <div class="footer-brand">
-          <div class="logo-row">
-            <div class="brand-logo" aria-hidden="true">
-              <img src="./logo.jpeg" alt="">
+        <div>
+          <div class="brand" style="margin-bottom: 16px;">
+            <div class="brand-logo" style="background:#fff;">
+              <img src="logo.png" alt="Logo">
             </div>
-            <div>
-              <div class="brand-name">E-Jarnauld Soft</div>
-              <div class="brand-sub">Solutions Informatiques</div>
-            </div>
+            <span class="footer-brand-title">E-JARNAULD SOFT</span>
           </div>
-
-          <div class="footer-slogan">Cabinet d'ingénierie IT et cybersécurité basé à Douala.</div>
-
-          <div class="footer-social" aria-label="Boutons contact">
-            <a class="social" href="https://wa.me/237654749357" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M20 11.5C20 16.2 16.2 20 11.5 20C9.9 20 8.4 19.6 7.1 18.8L4 20L5.2 16.9C4.4 15.6 4 14.1 4 12.5C4 7.8 7.8 4 12.5 4C17.2 4 21 7.8 21 12.5" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M9.5 9.3C9.7 9 10.1 8.9 10.4 9L11.4 9.4C11.7 9.6 11.9 10 11.8 10.4L11.6 11C11.5 11.3 11.6 11.6 11.8 11.8C12.1 12.2 12.5 12.6 12.9 12.8C13.2 13 13.5 13.1 13.8 13L14.4 12.8C14.8 12.7 15.2 12.9 15.4 13.2L15.8 14.2C15.9 14.5 15.8 14.9 15.5 15.1C15.1 15.4 14.6 15.6 14.1 15.5C13 15.3 11.7 14.5 10.8 13.6C9.9 12.7 9.1 11.4 8.9 10.3C8.8 9.8 9 9.3 9.3 8.9" fill="none"/>
-              </svg>
-              WhatsApp
-            </a>
-
-            <a class="social" href="mailto:cust_care@ejs-cm.com" aria-label="Email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 6H20V18H4V6Z" stroke="white" stroke-width="2"/>
-                <path d="M4 7L12 13L20 7" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Email
-            </a>
-
-            <a class="social" href="tel:+237654749357" aria-label="Téléphone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 4h4l2 5-2 1c1 3 3 5 6 6l1-2 5 2v4c-9 0-16-7-16-16Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M16 3h5v5" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Téléphone
-            </a>
-          </div>
+          <p class="footer-desc" data-i18n="footer_slogan">
+            Cabinet d'ingénierie informatique et de cybersécurité basé à Akwa, Douala. Solutions sur-mesure pour PME et grandes institutions.
+          </p>
         </div>
 
-        <!-- Col 2 -->
-        <div class="footer-quick">
-          <div class="footer-col">
-            <h4>Services</h4>
-            <ul class="footer-list">
-              <li><a href="services.html">Réseau Informatique</a></li>
-              <li><a href="services.html">Infogérance</a></li>
-              <li><a href="services.html">Téléphonie d'Entreprise</a></li>
-              <li><a href="services.html">Télécommunications</a></li>
-              <li><a href="services.html">Vidéosurveillance</a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link" data-i18n-link="accueil">Accueil</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n-link="apropos">À Propos</a></li>
+            <li><a href="services.html" class="footer-link" data-i18n-link="services">Services</a></li>
+            <li><a href="actualites.html" class="footer-link" data-i18n-link="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="footer-link" data-i18n-link="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="footer-link" data-i18n-link="contact">Contact</a></li>
+          </ul>
+        </div>
 
-          <!-- Col 3 -->
-          <div class="footer-col">
-            <h4>Liens Rapides</h4>
-            <ul class="footer-list">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="about.html">À propos</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="actualites.html">Actualités</a></li>
-              <li><a href="astuces.html">Astuces</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="footer-col-title">Services Piliers</h4>
+          <ul class="footer-links">
+            <li><a href="services.html" class="footer-link">Pen-Testing & Audit Cyber</a></li>
+            <li><a href="services.html" class="footer-link">Sécurisation Cloud</a></li>
+            <li><a href="services.html" class="footer-link">Infogérance 24/7</a></li>
+            <li><a href="services.html" class="footer-link">Câblage Structuré</a></li>
+            <li><a href="services.html" class="footer-link">Vidéosurveillance CCTV</a></li>
+          </ul>
+        </div>
 
-          <!-- Col 4 -->
-          <div class="footer-col">
-            <h4>Coordonnées</h4>
-            <ul class="footer-list">
-              <li><a href="#">Douala, Cameroun</a></li>
-              <li><a href="mailto:cust_care@ejs-cm.com">cust_care@ejs-cm.com</a></li>
-              <li><a href="tel:+237654749357">+237 654 74 93 57</a></li>
-              <li><a href="#">Réponse moyenne : moins de 2 heures</a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="footer-col-title">Contact & Siège</h4>
+          <p class="footer-link" style="margin-bottom:8px;">📍 Akwa, Douala, Cameroun</p>
+          <p class="footer-link" style="margin-bottom:8px;">📞 +237 690 00 00 00 / WhatsApp</p>
+          <p class="footer-link" style="margin-bottom:16px;">✉️ contact@ejarnauld-soft.cm</p>
+          <a href="contact.html" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" data-i18n="auditGratuit">Audit & Devis gratuit</a>
         </div>
       </div>
 
-      <div class="copyright">
-        <div>© <span id="year"></span> E-Jarnauld Soft. Tous droits réservés.</div>
-        <div class="foot-links">
-          <a href="confidentialite.html" style="color:var(--muted);font-weight:700;">Confidentialité</a>
-          <a href="cgv.html" style="color:var(--muted);font-weight:700;">CGV</a>
+      <div class="footer-bottom">
+        <div>&copy; 2026 E-JARNAULD SOFT. <span data-i18n="rights">Tous droits réservés.</span></div>
+        <div class="footer-legal-links">
+          <a href="cgv.html" class="footer-link" data-i18n="cgv_title">CGV</a>
+          <a href="confidentialite.html" class="footer-link" data-i18n="conf_title">Politique de Confidentialité</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="./i18n.js"></script>
-  <script>
-    // i18n
-    window.i18n?.initI18n?.();
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    const onScroll = () => {
-      if (!navbar) return;
-      if (window.scrollY > 8) navbar.classList.add('is-scrolled');
-      else navbar.classList.remove('is-scrolled');
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // Mobile drawer (robuste)
-    const drawer = document.getElementById('drawer');
-    const menuToggle = document.getElementById('menuToggle');
-    const drawerClose = document.getElementById('drawerClose');
-
-    const setDrawerOpen = (isOpen) => {
-      if (!drawer) return;
-      drawer.classList.toggle('open', isOpen);
-      drawer.setAttribute('aria-hidden', String(!isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    };
-
-    const openDrawer = () => setDrawerOpen(true);
-    const closeDrawer = () => setDrawerOpen(false);
-
-    menuToggle?.addEventListener('click', openDrawer);
-    drawerClose?.addEventListener('click', closeDrawer);
-
-    // Fermer uniquement si on clique sur le backdrop
-    drawer?.addEventListener('click', (e) => {
-      if (!drawer) return;
-      const isBackdropClick = e.target === drawer || e.target?.closest?.('#drawer') === drawer;
-      if (isBackdropClick && !e.target?.closest?.('.drawer-panel')) closeDrawer();
-    });
-
-    drawer?.querySelectorAll('[data-drawer-link]').forEach(a => a.addEventListener('click', closeDrawer));
-
-    // Escape
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDrawer();
-    });
-
-
-
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('is-visible');
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-
-    // Accordéon étapes
-    document.querySelectorAll('.steps-toggle').forEach(btn => {
-      const panel = document.getElementById(btn.getAttribute('aria-controls'));
-      const setOpen = (open) => {
-        btn.setAttribute('aria-expanded', String(open));
-        panel.dataset.open = open ? 'true' : 'false';
-        panel.setAttribute('aria-hidden', String(!open));
-      };
-      btn.addEventListener('click', () => {
-        const isOpen = panel.dataset.open === 'true';
-        setOpen(!isOpen);
-      });
-    });
-
-    // Search + category filtering (temps réel)
-    const searchInput = document.getElementById('searchInput');
-    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
-
-    // On filtre uniquement les éléments de la page qui portent data-search et data-category
-    const filterables = Array.from(document.querySelectorAll('[data-search][data-category]'));
-
-    // Map: category sélectionnée -> match sur data-system / data-category / tags
-    const normalize = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-    const getFilterPredicate = (filterValue) => {
-      if (filterValue === 'Tous') return () => true;
-      if (filterValue === 'Windows') return (el) => el.dataset.system === 'Windows';
-      if (filterValue === 'macOS') return (el) => el.dataset.system === 'macOS';
-      // Les cartes optimisation portent data-category="Optimisation"
-      return (el) => el.dataset.category === filterValue || el.dataset.search?.includes(normalize(filterValue));
-    };
-
-    let activeFilter = 'Tous';
-
-    const applyFilters = () => {
-      const q = normalize(searchInput.value);
-      const predCat = getFilterPredicate(activeFilter);
-
-      filterables.forEach(el => {
-        const hay = normalize(el.dataset.search);
-        const matchSearch = q.length === 0 || hay.includes(q) || hay.includes(q.replace(/\s+/g,' '));
-        const matchCat = predCat(el);
-        const shouldShow = matchSearch && matchCat;
-        el.dataset.hidden = shouldShow ? 'false' : 'true';
-        // Animation fondu via CSS (transition)
-      });
-
-      // Les raccourcis sont aussi dans .table-row qui utilise data-hidden
-      // Les cards optimisation sont dans .opt-card et utilisent aussi data-hidden via les styles.
-    };
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = btn.dataset.filter;
-        activeFilter = val;
-        filterButtons.forEach(b => b.classList.toggle('is-active', b === btn));
-        filterButtons.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
-        applyFilters();
-      });
-    });
-
-    searchInput?.addEventListener('input', () => {
-      // Temps réel
-      applyFilters();
-    });
-
-    // CTA demo
-
-    // init visible
-    filterables.forEach(el => el.dataset.hidden = 'false');
-    applyFilters();
-
-    // Corrige l’affichage en fonction du CSS attendu (table-row data-hidden true)
-    // (les styles sont déjà définis par data-hidden)
-  </script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
-

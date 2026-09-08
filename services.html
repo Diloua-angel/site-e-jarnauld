@@ -1,735 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>E-JARNAULD SOFT — Solutions Informatiques premium (Services)</title>
-    <meta name="description" content="E-JARNAULD SOFT — Catalogue de services IT : sécurité, maintenance, infrastructure, cloud et câblage. Audit & devis gratuits." />
-
-    <!-- Fonts -->
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-      /*
-      CSS CORRIGE (sans changer la structure HTML)
-      Objectif: lisibilité totale header/liens/cartes + hover/focus + z-index/overlays
-      */
-      :root{
-        /* Rouge moins agressif (style "crise" / sombre) */
-        --primary:#f50f1e;
-        --primary2:#d30812;
-        --bg:#FFFFFF;
-        --text:#0B0B0F;
-        --muted:#4B5563;
-        --muted2:#6B7280;
-        --border:#E5E7EB;
-        --shadow: 0 10px 30px rgba(11,11,15,.08);
-        --radius:18px;
-        --radius2:24px;
-        --max:1180px;
-        --z-header:70;
-
-        --bg:#FFFFFF;
-        --card:#ffffff;
-        --surface:#f6f7f9;
-        --text:#111111;
-        --muted:#4B5563;
-        --muted2:#6B7280;
-        --border:#E5E7EB;
-        --shadow: 0 10px 30px rgba(17,24,39,.06);
-        --radius:18px;
-        --radius2:24px;
-        --max:1180px;
-      }
-
-      *{ box-sizing:border-box; }
-      html,body{ height:100%; }
-      body{
-        margin:0;
-        background: var(--bg);
-        color:var(--text);
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        line-height:1.5;
-        overflow-x:hidden;
-      }
-
-      a{ color:inherit; text-decoration:none; }
-      a:focus-visible{ outline:2px solid rgba(238,28,37,.6); outline-offset:3px; border-radius:10px; }
-      a:hover{ color:inherit; }
-      a:visited{ color:inherit; }
-
-      img{ max-width:100%; display:block; }
-
-      .container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
-
-      /* Navbar */
-      .navbar{
-        position:fixed; top:0; left:0; right:0;
-        z-index:50;
-        background: rgba(255,255,255,.90);
-        backdrop-filter: blur(0px);
-        border-bottom:1px solid rgba(190, 192, 196, 0.75);
-        transition: all .25s ease;
-      }
-      .navbar.is-scrolled{
-        backdrop-filter: blur(12px);
-        background: rgba(255,255,255,.96);
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-inner{
-        display:flex; align-items:center; justify-content:space-between;
-        padding:14px 0;
-        gap:14px;
-      }
-
-      .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
-      .brand-logo{
-      width:40px; 
-      height:40px; 
-      /*border-radius:12px;*/
-      border-radius: 0;
-      /*background: linear-gradient(145deg, rgba(238,28,37,.18), rgba(255,255,255,.04));*/
-      background: none;
-      /*border:1px solid rgba(238,28,37,.12);*/
-      border: none;
-      display:grid; place-items:center;
-      /*box-shadow: 0 14px 35px rgba(0,0,0,.20);
-      overflow:hidden; */
-      box-shadow: none;
-      overflow: visible;
-    }
-    .brand-logo img{ 
-      width:100%; 
-      height:100%; 
-      /*object-fit:cover; */
-      object-fit: contain;
-      /*filter:saturate(1.1) contrast(1.05); */
-      filter: none;
-    }
-      .brand-text{ min-width:0; }
-      .brand-name{
-        font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
-        font-weight:700;
-        letter-spacing:.2px;
-        font-size:15px;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
-      }
-      .brand-sub{ font-size:12px; color:var(--muted2); margin-top:2px; }
-
-      .nav-links{ display:none; align-items:center; gap:22px; }
-      .nav-links a{
-        color: rgba(17,17,17,.88) !important;
-        font-size:13px;
-        padding:10px 0;
-        position:relative;
-        font-weight:700;
-        letter-spacing:.1px;
-        z-index: 10;
-      }
-
-      .nav-links a::after{
-        content:'';
-        position:absolute; left:0; bottom:6px;
-        width:0; height:2px;
-        background: var(--primary);
-        transition: width .2s ease;
-      }
-      .nav-links a:hover::after{ width:100%; }
-      .nav-links a.is-active{ color: rgba(255,255,255,.98); }
-      .nav-links a.is-active::after{ width:100%; }
-
-      .nav-actions{ display:flex; align-items:center; gap:10px; }
-
-      .btn{
-        border:1px solid rgba(255,255,255,.18);
-        background: transparent;
-        color:var(--text);
-        padding:10px 14px;
-        border-radius:14px;
-        font-size:13px;
-        font-weight:600;
-        cursor:pointer;
-        transition: transform .15s ease, border-color .2s ease, background .2s ease, opacity .2s ease;
-        display:inline-flex; align-items:center; justify-content:center; gap:10px;
-        user-select:none;
-        white-space:nowrap;
-      }
-      .btn:active{ transform: translateY(1px); }
-      .btn:hover{ border-color: rgba(255,255,255,.28); }
-
-      .btn-primary{
-        background: var(--primary);
-        border-color: var(--primary);
-        box-shadow: 0 10px 30px rgba(214,38,56,.18);
-        color:#FFFFFF;
-      }
-      .btn-primary:hover{ filter: brightness(0.98); }
-
-      .btn-ghost{ border-color: var(--border); color: var(--text); background: transparent; }
-
-      .menu-toggle{
-        width:44px; height:44px;
-        display:grid; place-items:center;
-        border-radius:14px;
-        border:1px solid rgba(0,0,0,.18);
-        background: rgba(0,0,0,.06);
-        cursor:pointer;
-      }
-      
-
-      /* Mobile drawer */
-      .drawer{
-        position:fixed; inset:0;
-        z-index:80;
-        background: rgba(0,0,0,.65);
-        backdrop-filter: blur(8px);
-        /* Important: garantir un rendu visible sur petit écran */
-        display:none;
-        opacity:0;
-        visibility:hidden;
-      }
-      .drawer.open{
-        display:block;
-        opacity:1;
-        visibility:visible;
-      }
-      .drawer-panel{
-        position:absolute; right:0; top:0; bottom:0;
-        width:min(360px, 92vw);
-        background: rgba(133, 98, 98, 0.92);
-        border-left:1px solid rgba(252, 252, 252, 0.1);
-        padding:18px;
-        display:flex; flex-direction:column; gap:16px;
-        transform: translateX(12px);
-      }
-      .drawer.open .drawer-panel{ animation: slideIn .2s ease forwards; }
-      @keyframes slideIn{ to { transform: translateX(0); } }
-
-      .drawer-top{ display:flex; align-items:center; justify-content:space-between; }
-      .drawer-links{ display:flex; flex-direction:column; gap:10px; padding-top:8px; }
-      .drawer-links a{
-        padding:12px 12px;
-        border:1px solid rgba(255,255,255,.10);
-        border-radius:14px;
-        background: rgba(255,255,255,.03);
-        color: rgba(255, 255, 255, 0.92);
-        font-weight:600;
-        font-size:14px;
-      }
-      .drawer-actions{ display:flex; flex-direction:column; gap:10px; }
-
-      /* Sections */
-      section{ padding:86px 0; }
-      .hero{ padding-top:110px; }
-
-      .section-title{
-        font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-        font-size:34px;
-        letter-spacing:-.4px;
-        margin:0;
-      }
-      .section-sub{ color:var(--muted); margin-top:12px; font-size:15px; max-width:68ch; }
-
-      /* Hero */
-      .hero-grid{
-        display:grid;
-        grid-template-columns: 1fr;
-        gap:18px;
-        align-items:stretch;
-      }
-      .hero-left{ padding:10px 0; }
-
-      .hero-kicker{
-        display:inline-flex; align-items:center; gap:10px;
-        padding:8px 12px;
-        border-radius:999px;
-        border:1px solid rgba(224, 3, 3, 0.12);
-        background: rgba(253, 97, 97, 0.03);
-        color: rgba(0, 0, 0, 0.9);
-        font-weight:700;
-        font-size:12px;
-        margin-bottom:18px;
-      }
-
-      .kicker-kicker-dot{
-        width:8px; height:8px; border-radius:50%;
-        background: rgba(247, 247, 247, 0.65);
-        box-shadow: 0 0 0 6px rgba(247, 245, 245, 0.1);
-      }
-
-      .hero-title{
-        font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-        font-size:44px;
-        line-height:1.05;
-        margin:0;
-        letter-spacing:-.6px;
-      }
-
-      .hero-desc{
-        margin-top:14px;
-        color: var(--muted);
-        font-size:16px;
-        max-width:62ch;
-        white-space:pre-line;
-      }
-
-      /* Counter */
-      .counter-row{ margin-top:18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-      .counter-chip{
-        border-radius:999px;
-        padding:10px 14px;
-        border:1px solid rgba(255,255,255,.14);
-        background: rgba(0,0,0,.22);
-        font-weight:900;
-        letter-spacing:.2px;
-        font-size:13px;
-        display:inline-flex; align-items:center; gap:10px;
-      }
-      .counter-anim{ font-family:'Space Grotesk', Inter, system-ui, sans-serif; font-size:18px; color: rgba(255,255,255,.98); }
-      .counter-underline{ width:10px; height:10px; border-radius:50%; background: var(--primary); box-shadow: 0 0 0 6px rgba(238,28,37,.14); }
-
-      /* Filters */
-      .filter-row{ margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-      .filter-btn{
-        border-radius:999px;
-        padding:10px 14px;
-        border:1px solid rgba(238,28,37,.35);
-        background: rgba(255,255,255,.92);
-        color: rgba(11,11,15,.95) !important;
-        font-weight:1000;
-        font-size:13px;
-        cursor:pointer;
-        transition: background .2s ease, border-color .2s ease, transform .15s ease;
-        user-select:none;
-        position:relative;
-        z-index:10;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .filter-btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.22); }
-      .filter-btn.is-active{
-        background: rgba(238,28,37,.98);
-        border-color: rgba(238,28,37,.98);
-        color: #FFFFFF !important;
-        box-shadow: 0 10px 25px rgba(238,28,37,.18);
-      }
-
-      /* Services grid */
-      .services-grid{ margin-top:18px; display:grid; grid-template-columns: 1fr; gap:14px; }
-
-      .service-card{
-        /* Fond clair des cartes pour lisibilité (aucune casse hover/reveal) */
-        background: linear-gradient(180deg, #FFFFFF 0%, #F7F8FA 100%) !important;
-        border:1px solid rgba(229,231,235,.95) !important;
-        border-radius: var(--radius);
-        padding:18px;
-        position:relative;
-        overflow:hidden;
-        transition: transform .18s ease, border-color .2s ease;
-        min-height: 330px;
-        display:flex;
-        flex-direction:column;
-      }
-      .service-card:hover{ transform: translateY(-2px); border-color: var(--primary); }
-      .service-card::after{ display:none; }
-      .service-card > *{ position:relative; z-index:1; }
-
-      .service-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
-      .icon-wrap{
-        width:42px; height:42px; border-radius:16px;
-        background: rgba(255,255,255,.04);
-        border:1px solid rgba(255,255,255,.12);
-        display:grid; place-items:center;
-        flex:0 0 auto;
-      }
-
-      .category-badge{
-        display:inline-flex; align-items:center;
-        padding:7px 10px;
-        border-radius:999px;
-        border:1px solid rgba(0, 0, 0, 0.5);
-        background: rgba(0, 0, 0, 0.13);
-        color: rgba(0, 0, 0, 0.98);
-        font-weight:900;
-        font-size:11px;
-        letter-spacing:.4px;
-        white-space:nowrap;
-      }
-
-      .service-title{
-        margin:14px 0 8px;
-        font-family:'Space Grotesk', Inter, sans-serif;
-        font-size:18px;
-        font-weight:900;
-        color:#0B0B0F !important;
-        text-shadow:none !important;
-      }
-      .service-desc{
-        color:#111827 !important;
-        font-size:14px;
-        margin:0;
-        max-width:52ch;
-        white-space:pre-line;
-      }
-
-      /* Forcer un contraste solide même si d'autres règles s'appliquent */
-      .service-features li{ color:#111827 !important; }
-      .service-features li span{ color:inherit !important; }
-      .check-mini{ color:#fc9f9f !important; }
-
-      /* Icônes: garder des traits visibles sur fond clair */
-      .service-card svg{ display:block; }
-      .service-card .icon-wrap path{ color:var(--primary) !important; }
-      .service-card .icon-wrap svg path{ stroke: currentColor !important; }
-
-      .service-features{ margin:14px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
-      /* Texte checklist : sombre pour contraste sur fond clair */
-      .service-features li{ display:flex; gap:10px; align-items:flex-start; color: #111827 !important; font-weight:650; font-size:13px; }
-
-      .check-mini{
-        width:18px; height:18px; border-radius:7px;
-        display:grid; place-items:center;
-        background: rgba(235, 59, 59, 0.12);
-        border:1px solid rgba(231, 38, 38, 0.35);
-        color: rgba(252, 167, 167, 0.98);
-        flex: 0 0 auto;
-        margin-top:1px;
-        font-size:12px;
-        font-weight:900;
-      }
-
-      .service-bottom{ margin-top:auto; padding-top:16px; }
-      .service-link{
-        /* Lisibilité parfaite sur fond clair (SCAG/WCAG): texte sombre + fond clair */
-        display:inline-flex; align-items:center; gap:10px;
-        color: #0B0B0F !important;
-        font-weight:900; font-size:13px;
-        padding:12px 12px;
-        border-radius:14px;
-        border:1px solid rgba(236, 158, 158, 0.35) !important;
-        background: #f8cece !important;
-        transition: border-color .2s ease, transform .18s ease, background .2s ease;
-        width:100%;
-        justify-content:center;
-      }
-      .service-link:hover{
-        /* Hover conservé mais contrasté */
-        border-color: rgba(238,28,37,.85) !important;
-        background: rgba(238,28,37,.98) !important;
-        color: #fcfcfc !important;
-        transform: translateY(-1px);
-      }
-
-      /* Fade / reveal */
-      .reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-      .reveal.is-visible{ opacity:1; transform: translateY(0); }
-
-      /* Filter animation (fade) */
-      .service-card[data-hidden="true"]{
-        opacity:0;
-        transform: translateY(10px);
-        pointer-events:none;
-        height:0;
-        margin:0;
-        padding:0;
-        border:0;
-        overflow:hidden;
-      }
-      .service-card[data-hidden="false"]{
-        opacity:1;
-        transform: translateY(0);
-        pointer-events:auto;
-        height:auto;
-        margin:0;
-        padding:18px;
-        border:1px solid rgba(255,255,255,.11);
-        overflow:visible;
-      }
-
-      /* CTA Final */
-      .cta-final{
-        background: radial-gradient(900px 320px at 20% 30%, rgba(238,28,37,.22), transparent 55%),
-                    radial-gradient(600px 260px at 80% 40%, rgba(255,255,255,.10), transparent 60%),
-                    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-        border-top:1px solid rgba(238,28,37,.20);
-        border-bottom:1px solid rgba(238,28,37,.20);
-      }
-      .cta-grid{ display:grid; grid-template-columns: 1fr; gap:16px; align-items:center; }
-      .cta-badge{
-        display:inline-flex; align-items:center; gap:10px;
-        padding:9px 12px;
-        border-radius:999px;
-        border:1px solid rgba(250, 28, 28, 0.55);
-        background: rgba(250, 34, 45, 0.14);
-        color: rgba(255, 175, 175, 0.98);
-        font-weight:900;
-        font-size:12px;
-        width:fit-content;
-      }
-      .cta-title{ margin:10px 0 0; font-family:'Space Grotesk', Inter, sans-serif; font-size:28px; font-weight:900; letter-spacing:-.4px; }
-      .cta-sub{ margin-top:10px; color:var(--muted); font-size:15px; white-space:pre-line; }
-      .cta-actions{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
-
-      /* Footer (copie fidèle de index.html) */
-      footer{
-        padding:44px 0 26px;
-        border-top:1px solid rgba(252, 252, 252, 0.08);
-        background: #ffffff;
-        color: rgba(17,17,17,.92);
-      }
-
-
-      .footer-grid{ display:grid; grid-template-columns: 1fr; gap:20px; }
-      .footer-brand{ display:flex; flex-direction:column; gap:12px; }
-      .footer-brand .logo-row{ display:flex; align-items:center; gap:12px; }
-      .footer-slogan{ color: rgba(17,17,17,.92); font-size:14px; max-width:52ch; }
-
-      .socials{ display:flex; gap:10px; flex-wrap:wrap; }
-
-      /* Footer sociaux: contraste cohérent sur fond clair */
-      .social{
-        display:inline-flex; align-items:center; gap:10px;
-        padding:10px 12px;
-        border-radius:14px;
-        border:1px solid rgba(229,231,235,.95);
-        background: rgba(255,255,255,.65);
-        font-weight:900;
-        font-size:13px;
-        color: rgba(17,17,17,.92) !important;
-        z-index: 5;
-        position: relative;
-      }
-      .social svg{ display:block; }
-      .social svg path{ stroke: rgba(17,17,17,.92) !important; }
-      .social:hover{
-        background: rgba(112, 112, 112, 0.96);
-        border-color: rgba(87, 86, 86, 0.96);
-        color: #ffffff !important;
-      }
-      .social:hover svg path{ stroke: #ffffff !important; }
-
-      .footer-cols{ display:grid; grid-template-columns: 1fr; gap:16px; }
-      .fcol h4{ margin:0; font-size:13px; color: rgba(17,17,17,.92); font-weight:1000; letter-spacing:.2px; }
-      .fcol a{ display:inline-flex; margin-top:10px; color: rgba(17,17,17,.78); font-size:14px; font-weight:600; }
-
-      .copyright{ margin-top:22px; color: rgba(17,17,17,.70); font-size:13px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
-
-
-      .foot-links{ display:flex; gap:16px; flex-wrap:wrap; }
-
-      @media (min-width: 820px){
-        .nav-links{ display:flex; }
-        .menu-toggle{ display:none; }
-        .hero-grid{ grid-template-columns: 1.1fr .9fr; gap:22px; }
-        .services-grid{ grid-template-columns: repeat(3, 1fr); }
-        .cta-grid{ grid-template-columns: 1.25fr .75fr; }
-        .footer-grid{ grid-template-columns: 1.1fr .9fr; }
-        .footer-cols{ grid-template-columns: 1fr 1fr 1fr; }
-      }
-
-      @media (max-width: 819px){
-        .services-grid{ grid-template-columns: repeat(2, 1fr); }
-      }
-
-      @media (max-width: 520px){
-        .services-grid{ grid-template-columns: 1fr; }
-      }
-
-      @media (prefers-reduced-motion: reduce){
-        .reveal{ transition:none; }
-      }
-
-      html{ scroll-behavior:smooth; }
-
-      /* Footer (aligné index.html) */
-      .footer-grid{
-        display:grid;
-        grid-template-columns: 1fr;
-        gap:16px;
-      }
-
-      .footer-brand{ display:flex; flex-direction:column; gap:12px; }
-      .footer-brand .logo-row{ display:flex; align-items:center; gap:12px; }
-      .footer-slogan{ color: var(--muted); font-size:14px; max-width:48ch; line-height:1.5; }
-
-      .footer-quick{
-        display:grid;
-        grid-template-columns: 1fr;
-        gap:14px;
-      }
-
-      .footer-col{
-        border-radius: var(--radius);
-        background: rgba(255,255,255,.02);
-        border:1px solid rgba(229,231,235,.50);
-        padding:14px;
-      }
-
-      .footer-col h4{
-      margin:0;
-      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-      font-weight:1000;
-      letter-spacing:-.2px;
-      font-size:14px;
-      color: rgba(17,17,17,.92);
-      }
-
-    .footer-list{ margin:12px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
-    .footer-list a{
-      color: var(--muted);
-      font-size:14px;
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .footer-list a:hover{ color: var(--primary2); }
-
-    .footer-social{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:6px;
-    }
-
-
-    @media (min-width: 980px){
-      footer{ padding:32px 0 22px; }
-      .footer-grid{ grid-template-columns: 1.05fr 1fr; align-items:start; }
-      .footer-quick{ grid-template-columns: repeat(3, 1fr); }
-      .footer-col{ min-height: 100%; }
-    }
-
-    @media (min-width: 1180px){
-      .footer-grid{ grid-template-columns: 1fr; }
-      .footer-quick{ grid-template-columns: repeat(4, 1fr); }
-    }
-
-    /* Small utility for underline active nav */
-    .nav-links a[data-active="true"]::after{ width:100%; }
-
-    /* Avatars + badge in hero aside (visual only) */
-.hero-card{
-      border-radius: var(--radius2);
-      background: var(--card);
-      border:1px solid var(--border);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-      padding:18px;
-      min-height: 260px;
-    }
-    .hero-card::before{
-      content:'';
-      position:absolute; inset:-2px;
-      background: radial-gradient(600px 220px at 70% 20%, rgba(238,28,37,.25), transparent 55%),
-                  radial-gradient(420px 220px at 20% 70%, rgba(255,255,255,.10), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .hero-card > *{ position:relative; z-index:1; }
-
-    .glass-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:16px; }
-    .badge-active{
-      display:inline-flex; align-items:center; gap:10px;
-      border-radius:999px;
-      padding:8px 12px;
-      border:1px solid rgba(238,28,37,.35);
-      background: rgba(0,0,0,.25);
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.3px;
-      color: rgba(255,255,255,.95);
-    }
-.pulse{
-      width:10px; height:10px; border-radius:50%;
-      background: var(--primary);
-      box-shadow: none;
-      animation: none;
-    }
-@keyframes pulse{ 0%{ } 100%{ } }
-
-    .avatars{ display:flex; align-items:center; justify-content:flex-end; }
-    .avatar{
-      width:34px; height:34px; border-radius:50%;
-      border:2px solid rgba(10,10,10,.9);
-      display:grid; place-items:center;
-      font-weight:900;
-      font-size:12px;
-      margin-left:-10px;
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.95);
-    }
-
-    .status-line{
-      margin-top:12px;
-      border-top:1px dashed rgba(255,255,255,.14);
-      padding-top:12px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .status-text{ color: rgba(128, 126, 126, 0.84); font-weight:700; font-size:13px; }
-    .status-chip{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px; border-radius:999px;
-background: rgba(0,0,0,.08);
-      border:1px solid rgba(46,234,78,.25);
-      color: rgba(220,255,228,.95);
-      font-weight:800; font-size:12px;
-      white-space:nowrap;
-    }
-    .shield-mini{
-      width:16px; height:16px; border-radius:6px;
-      background: rgba(46,234,78,.18);
-      border:1px solid rgba(12, 240, 50, 0.35);
-      display:grid; place-items:center;
-      font-size:10px;
-    }
-
-    .hero-visual-text{ margin-top:14px; color:rgba(26, 25, 25, 0.86); font-weight:850; font-size:13px; line-height:1.35; }
-  </style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-JARNAULD SOFT — Catalogue Complet de Services IT</title>
+  <meta name="description" content="Découvrez notre gamme complète d'interventions techniques : cybersécurité, infogérance, Cloud, réseaux, téléphonie IP, câblage et vidéosurveillance à Douala.">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet unifiée -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-  <!-- Navbar (identique à index.html) -->
-  <header class="navbar" id="top">
+  <!-- Navbar Fixe -->
+  <header class="navbar">
     <div class="container">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="E-JARNAULD SOFT">
-          <div class="brand-logo" aria-hidden="true">
-            <img src="./logo.jpeg" alt="">
+        <a class="brand" href="index.html" aria-label="E-JARNAULD SOFT">
+          <div class="brand-logo">
+            <img src="logo.png" alt="E-JARNAULD SOFT Logo">
           </div>
           <div class="brand-text">
-            <div class="brand-name">E-Jarnauld Soft</div>
-            <div class="brand-sub">Solutions Informatiques</div>
+            <span class="brand-name">E-JARNAULD SOFT</span>
+            <span class="brand-sub">Solutions Informatiques</span>
           </div>
         </a>
 
-        <nav class="nav-links" aria-label="Navigation principale">
-          <a data-i18n-link="accueil" href="index.html">Accueil</a>
-          <a data-i18n-link="apropos" href="about.html">À Propos</a>
-          <a data-i18n-link="services" href="services.html" class="is-active">Services</a>
-          <a data-i18n-link="actualites" href="actualites.html">Actualités</a>
-          <a data-i18n-link="astuces" href="astuces.html">Astuces</a>
-          <a data-i18n-link="contact" href="contact.html">Contact</a>
+        <nav aria-label="Navigation principale">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link" data-i18n-link="accueil">Accueil</a></li>
+            <li><a href="about.html" class="nav-link" data-i18n-link="apropos">À Propos</a></li>
+            <li><a href="services.html" class="nav-link is-active" data-i18n-link="services">Services</a></li>
+            <li><a href="actualites.html" class="nav-link" data-i18n-link="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="nav-link" data-i18n-link="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="nav-link" data-i18n-link="contact">Contact</a></li>
+          </ul>
         </nav>
 
         <div class="nav-actions">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <button type="button" class="btn btn-ghost" data-lang-toggle="fr" aria-pressed="true">FR</button>
-            <button type="button" class="btn btn-ghost" data-lang-toggle="en" aria-pressed="false">EN</button>
+          <div class="lang-switcher" aria-label="Sélecteur de langue">
+            <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
           </div>
-          <a class="btn btn-primary" href="#contact" aria-label="Demander un Devis">Demander un Devis</a>
-          <button class="menu-toggle" type="button" id="menuToggle" aria-label="Ouvrir le menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M4 7H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-<path d="M4 12H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-<path d="M4 17H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
+          <a href="contact.html" class="btn btn-primary" data-i18n="devis">Demander un devis</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
         </div>
@@ -737,609 +60,257 @@ background: rgba(0,0,0,.08);
     </div>
   </header>
 
-  <!-- Drawer -->
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="drawer-top">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div class="brand-logo" aria-hidden="true" style="width:36px;height:36px;border-radius:12px;">
-            <img src="./logo.png" alt="">
-          </div>
-          <div>
-            <div class="brand-name">E-Jarnauld Soft</div>
-            <div class="brand-sub">Solutions Informatiques</div>
-          </div>
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer" id="drawer" aria-label="Menu mobile">
+    <div class="drawer-header">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Logo">
         </div>
-        <button class="menu-toggle" type="button" id="drawerClose" aria-label="Fermer le menu">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M6 6L18 18" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-<path d="M18 6L6 18" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="drawer-links" aria-label="Liens">
-        <a data-i18n-link="accueil" href="index.html" data-drawer-link>Accueil</a>
-        <a data-i18n-link="apropos" href="about.html" data-drawer-link>À Propos</a>
-        <a data-i18n-link="services" href="services.html" data-drawer-link>Services</a>
-        <a data-i18n-link="actualites" href="actualites.html" data-drawer-link>Actualitées</a>
-        <a data-i18n-link="astuces" href="astuces.html" data-drawer-link>Astuces</a>
-        <a data-i18n-link="contact" href="contact.html" data-drawer-link>Contact</a>
-      </div>
-
-      <div class="drawer-actions">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <button type="button" class="btn btn-ghost" data-lang-toggle="fr" aria-pressed="true">FR</button>
-          <button type="button" class="btn btn-ghost" data-lang-toggle="en" aria-pressed="false">EN</button>
+        <div class="brand-text">
+          <span class="brand-name" style="color:#fff;">E-JARNAULD SOFT</span>
+          <span class="brand-sub">Solutions IT</span>
         </div>
-        <a class="btn btn-primary" href="contact.html">Demander un Devis</a>
       </div>
-
-      <div style="margin-top:auto;color:var(--muted2);font-size:12px;">
-        Basé à Douala, Cameroun.
+      <button class="drawer-close" id="drawerClose" aria-label="Fermer le menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" class="drawer-link" data-i18n-link="accueil">Accueil</a></li>
+      <li><a href="about.html" class="drawer-link" data-i18n-link="apropos">À Propos</a></li>
+      <li><a href="services.html" class="drawer-link is-active" data-i18n-link="services">Services</a></li>
+      <li><a href="actualites.html" class="drawer-link" data-i18n-link="actualites">Actualités</a></li>
+      <li><a href="astuces.html" class="drawer-link" data-i18n-link="astuces">Astuces</a></li>
+      <li><a href="contact.html" class="drawer-link" data-i18n-link="contact">Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <div class="lang-switcher" style="justify-content: center;">
+        <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
       </div>
+      <a href="contact.html" class="btn btn-primary" style="width:100%; text-align:center;" data-i18n="devis">Demander un devis</a>
     </div>
   </div>
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="accueil">
+    <section class="hero">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-left">
-            <div class="hero-kicker reveal">
-              <span class="kicker-kicker-dot" aria-hidden="true"></span>
-              Catalogue de Solutions
-            </div>
-            <h1 class="hero-title reveal">Des services conçus pour la performance.</h1>
-            <p class="hero-desc reveal">Découvrez notre gamme complète d'interventions techniques,
-  de la cybersécurité avancée au déploiement de réseaux télécoms.</p>
-
-            <div class="counter-row reveal" aria-label="Compteur de solutions">
-              <div class="counter-chip" role="status" aria-live="polite">
-                <span class="counter-underline" aria-hidden="true"></span>
-                <span><span class="counter-anim" id="solutionsCount">0</span> solutions disponibles</span>
-              </div>
-            </div>
+        <div class="section-header reveal">
+          <div class="section-badge">
+            <span class="dot"></span>
+            <span>Catalogue d'Ingénierie</span>
           </div>
+          <h1 class="section-title">Catalogue Complet de <span class="text-primary">Services IT</span></h1>
+          <p class="section-desc">
+            De la cybersécurité offensive au déploiement de réseaux télécoms haut débit, nous couvrons l'intégralité du cycle de vie de votre système d'information.
+          </p>
+        </div>
 
-          <aside class="hero-card reveal" aria-label="Aperçu">
-            <div class="glass-top">
-              <div class="badge-active" title="Approche orientée résultats">
-                <span class="pulse" aria-hidden="true"></span>
-                PERFORMANCE
-              </div>
-              <div class="avatars" aria-label="Indicateurs">
-<div class="avatar" style="background: rgba(255,26,45,.18);border-color:rgba(11,11,15,.92);">ES</div>
-<div class="avatar" style="background: rgba(0,0,0,.08);color: rgba(11,11,15,.85);border-color:rgba(11,11,15,.75);">IT</div>
-                <div class="avatar" style="background: rgba(107,114,128,.14);color: rgba(11,11,15,.85);border-color:rgba(11,11,15,.75);">NET</div>
-              </div>
-            </div>
-
-            <div class="hero-visual-text">
-              Intervention locale &amp; déploiements maîtrisés.
-              <br>Des livrables clairs : audit, architecture, déploiement et suivi.
-            </div>
-
-            <div class="status-line">
-              <div class="status-text">Démarrage rapide</div>
-              <div class="status-chip">
-                <span class="shield-mini" aria-hidden="true">✓</span>
-                Opérationnel
-              </div>
-            </div>
-          </aside>
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal">
+          <button class="filter-tab is-active" data-filter="all">Tous nos Services</button>
+          <button class="filter-tab" data-filter="security">Sécurité & Audit</button>
+          <button class="filter-tab" data-filter="infra">Infrastructure & Câblage</button>
+          <button class="filter-tab" data-filter="cloud">Cloud & Infogérance</button>
+          <button class="filter-tab" data-filter="telecom">Télécoms & CCTV</button>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES + FILTRES -->
-    <section>
+    <!-- SERVICES GRID -->
+    <section class="section section-surface" style="padding-top: 40px;">
       <div class="container">
-        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-          <div>
-            <h2 class="section-title reveal">Catalogue de Services</h2>
-            <p class="section-sub reveal">Filtrez par catégorie pour trouver l’offre la plus adaptée à votre besoin.</p>
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card reveal" data-category="security">
+            <img src="pen_testing & Audit.png" alt="Pen-Testing" class="service-card-img">
+            <h3 class="service-title">Pen-Testing & Audit Cyber</h3>
+            <p class="service-desc">Simulations d'attaques réelles (boîte noire / blanche), audit de code, analyse de vulnérabilités et plan de remédiation complet pour votre entreprise.</p>
+            <div class="service-tags">
+              <span class="service-tag">Sécurité</span>
+              <span class="service-tag">Audit</span>
+              <span class="service-tag">Norme ISO</span>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Pen-Testing & Audit Cyber', '<h4>Service d\'Audit Cyber Approfondi</h4><p style=\'margin:12px 0;\'>Nos ingénieurs certifiés effectuent un examen rigoureux de vos pare-feux, serveurs et applications Web. Un rapport détaillé avec classement de sévérité (CVSS) et correctifs vous est remis.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Test d\'intrusion réseau & Web</li><li>Rapport de conformité réglementaire</li><li>Accompagnement post-audit inclus</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Demander un Devis Cyber</a>')">Obtenir un Devis &rarr;</button>
           </div>
-        </div>
 
-        <div class="filter-row reveal" role="tablist" aria-label="Filtre par catégorie">
-          <button type="button" class="filter-btn is-active" data-filter="Tous">Tous</button>
-          <button type="button" class="filter-btn" data-filter="Sécurité">Sécurité</button>
-          <button type="button" class="filter-btn" data-filter="Maintenance">Maintenance</button>
-          <button type="button" class="filter-btn" data-filter="Infrastructure">Infrastructure</button>
-          <button type="button" class="filter-btn" data-filter="Cloud">Cloud</button>
-        </div>
-
-        <div class="services-grid" id="servicesGrid" aria-live="polite">
-
-          <!-- 1 -->
-          <article class="service-card reveal" data-category="Sécurité" data-service="1">
-
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L20 6V12C20 17 16 21 12 22C8 21 4 17 4 12V6L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M9 12L11 14L15 10" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Sécurité</div>
+          <!-- Service 2 -->
+          <div class="service-card reveal" data-category="cloud">
+            <img src="securitecloud&hybride1.png" alt="Cloud Security" class="service-card-img">
+            <h3 class="service-title">Sécurisation Cloud & Hybride</h3>
+            <p class="service-desc">Protection et hardening de vos infrastructures Cloud AWS, Azure et hébergements privés localisés au Cameroun avec sauvegarde automatisée.</p>
+            <div class="service-tags">
+              <span class="service-tag">Cloud</span>
+              <span class="service-tag">AWS / Azure</span>
+              <span class="service-tag">Backup</span>
             </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Sécurisation Cloud & Hybride', '<h4>Protection Cloud d\'Entreprise</h4><p style=\'margin:12px 0;\'>Sécurisez l\'accès à vos données d\'entreprise grâce à la mise en place d\'IAM stricte, de pare-feux Cloud (WAF) et de stratégies de réplication multizone.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Chiffrement des données stockées</li><li>Surveillance 24/7 anti-DDoS</li><li>Sauvegardes chiffrées hors site</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Protéger mon Cloud</a>')">Obtenir un Devis &rarr;</button>
+          </div>
 
-            <img src="pen_testing & Audit.png" alt="Pen-Testing & Audit" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-            
-            <h3 class="service-title">Pen-Testing &amp; Audit</h3> 
-            <p class="service-desc">Tests d'intrusion, analyse de vulnérabilités, rapport détaillé et plan de remédiation.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Test boîte noire/blanche</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Rapport de conformité</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Suivi post-audit</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
+          <!-- Service 3 -->
+          <div class="service-card reveal" data-category="cloud">
+            <img src="infogerance1.png" alt="Infogérance" class="service-card-img">
+            <h3 class="service-title">Infogérance Complète & Helpdesk</h3>
+            <p class="service-desc">Externalisez la gestion de votre informatique : assistance utilisateurs 5j/7 ou 7j/7, gestion des licences et supervision des serveurs.</p>
+            <div class="service-tags">
+              <span class="service-tag">Helpdesk</span>
+              <span class="service-tag">Support 24/7</span>
+              <span class="service-tag">Supervision</span>
             </div>
-          </article>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Infogérance Complète & Helpdesk', '<h4>Gestion Managée d\'Infrastructure</h4><p style=\'margin:12px 0;\'>Déléguez l\'administration quotidienne de vos ordinateurs et serveurs à notre Helpdesk basé à Douala. SLA de réponse garanti sous 2h.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Prise en main à distance sécurisée</li><li>Mises à jour critiques de sécurité</li><li>Rapport mensuel de santé du parc</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Demander une Infogérance</a>')">Obtenir un Devis &rarr;</button>
+          </div>
 
-          <!-- 2 -->
-          <article class="service-card reveal" data-category="Sécurité" data-service="2">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 18C4.79086 18 3 16.2091 3 14C3 11.7909 4.79086 10 7 10C7.6 10 8.1 10.1 8.6 10.3C9.3 8.1 11.3 6.5 13.7 6.5C16.6 6.5 19 8.9 19 11.8C19 14.0 17.2 15.8 15 15.8H7Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 12L12 19" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M9.5 16.5L12 19L14.5 16.5" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Sécurité</div>
-            </div>
-
-            <img src="securitecloud&hybride1.png" alt="Pen-Testing & Audit" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-
-            <h3 class="service-title">Sécurisation Cloud &amp; Hybride</h3>
-            <p class="service-desc">Protection de vos environnements cloud AWS, Azure et hybrides contre les cybermenaces.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Firewall cloud</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Chiffrement des données</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Surveillance 24/7</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
-            </div>
-          </article>
-
-          <!-- 3 -->
-          <article class="service-card reveal" data-category="Maintenance" data-service="3">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 11.5V18C21 19.657 19.657 21 18 21H6C4.343 21 3 19.657 3 18V6C3 4.343 4.343 3 6 3H12.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M16 3L21 8" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M14 5L19 10" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M7 13H12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M7 17H10" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Maintenance</div>
-            </div>
-
-            <img src="infogerance1.png" alt="Pen-Testing & Audit" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-
-            <h3 class="service-title">Infogérance Complète</h3>
-            <p class="service-desc">Gestion totale de votre parc informatique, helpdesk réactif et mises à jour critiques.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Helpdesk dédié</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Mises à jour automatisées</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Rapports mensuels</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
-            </div>
-          </article>
-
-          <!-- 4 -->
-          <article class="service-card reveal" data-category="Maintenance" data-service="4">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4.93 4.93L7.76 7.76" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M16.24 16.24L19.07 19.07" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M2 12H6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M18 12H22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4.93 19.07L7.76 16.24" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M16.24 7.76L19.07 4.93" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 8C10.3431 8 9 9.3431 9 11C9 12.6569 10.3431 14 12 14C13.6569 14 15 12.6569 15 11C15 9.3431 13.6569 8 12 8Z" stroke="var(--primary)" stroke-width="2"/>
-                </svg>
-              </div>
-              <div class="category-badge">Maintenance</div>
-            </div>
-
-            <img src="maintenance_jarnauld.png" alt="Maintenance Preventive" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-
+          <!-- Service 4 -->
+          <div class="service-card reveal" data-category="infra">
+            <img src="maintenance_jarnauld.png" alt="Maintenance" class="service-card-img">
             <h3 class="service-title">Maintenance Préventive</h3>
-            <p class="service-desc">Interventions régulières pour anticiper les pannes et garantir la continuité de service.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Visites planifiées</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Diagnostics complets</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Remplacement matériel</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
+            <p class="service-desc">Planification de visites de contrôle régulières pour dépoussiérer les serveurs, vérifier les disques durs et prévenir l'usure matérielle.</p>
+            <div class="service-tags">
+              <span class="service-tag">Maintenance</span>
+              <span class="service-tag">Diagnostic</span>
+              <span class="service-tag">Matériel</span>
             </div>
-          </article>
-
-          <!-- 5 -->
-          <article class="service-card reveal" data-category="Infrastructure" data-service="5">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 2H17C18.1046 2 19 2.89543 19 4V20C19 21.1046 18.1046 22 17 22H7C5.89543 22 5 21.1046 5 20V4C5 2.89543 5.89543 2 7 2Z" stroke="white" stroke-width="2"/>
-                  <path d="M9 19H15" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M9 7H15" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 11C12 10.4477 12.4477 10 13 10H13" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M11 10H10" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Infrastructure</div>
-            </div>
-
-            <img src="telephonie_jarnauld.png" alt="telephonie_jarnauld" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-            
-            <h3 class="service-title">Téléphonie IP / VoIP</h3>
-            <p class="service-desc">Déploiement de standards IP, files d'attente intelligentes et intégration CRM.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>IPBX Asterisk/3CX</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Enregistrement des appels</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Intégration CRM</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
-            </div>
-          </article>
-
-          <!-- 6 -->
-          <article class="service-card reveal" data-category="Infrastructure" data-service="6">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 13C4 7.47715 8.47715 3 14 3H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M20 3V9" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4 13V20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4 20H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M9 16L11 18L15 14" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Infrastructure</div>
-            </div>
-
-            <img src="reseau_jarnauld.png" alt="reseau_jarnauld" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-            
-            <h3 class="service-title">Réseaux Informatiques</h3>
-            <p class="service-desc">Architecture, déploiement et sécurisation de réseaux LAN/WAN/Wi-Fi d'entreprise.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Plan d'adressage IP</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>VPN sécurisé</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Supervision réseau</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
-            </div>
-          </article>
-
-          <!-- 7 -->
-          <article class="service-card reveal" data-category="Cloud" data-service="7">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 7C4 5.89543 4.89543 5 6 5H18C19.1046 5 20 5.89543 20 7V17C20 18.1046 19.1046 19 18 19H6C4.89543 19 4 18.1046 4 17V7Z" stroke="white" stroke-width="2"/>
-                  <path d="M8 9H16" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M8 13H14" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M16 13L18 15" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M18 15L16 17" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Cloud</div>
-            </div>
-
-            <img src="cablage_jarnauld.png" alt="cablage_jarnauld" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-
-            <h3 class="service-title">Câblage Structuré</h3>
-            <p class="service-desc">Câblage Cat6A, fibre optique, baies de brassage et certification de liens.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Câblage Cat6A/Fibre</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Baies de brassage</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Certification Fluke</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
-            </div>
-          </article>
-
-          <!-- 8 -->
-          <article class="service-card reveal" data-category="Sécurité" data-service="8">
-            <div class="service-head">
-              <div class="icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 4H20V14C20 15.1046 19.1046 16 18 16H6C4.89543 16 4 15.1046 4 14V4Z" stroke="white" stroke-width="2"/>
-                  <path d="M8 20H16" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 8V12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M10.5 10.5C11.4 11.3 12.6 11.3 13.5 10.5" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M15 6.5L17 8.5" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-badge">Sécurité</div>
-            </div>
-
-            <img src="videosurveillance_jarnauld.png" alt="videosurveillance_jarnauld" style="max-width: 100%; max-height: 50%; margin-bottom: 10px; border-radius: 6px;">
-
-            <h3 class="service-title">Vidéosurveillance &amp; Contrôle d'accès</h3>
-            <p class="service-desc">Installation de systèmes CCTV IP, contrôle d'accès biométrique et supervision à distance.</p>
-            <ul class="service-features">
-              <li><span class="check-mini" aria-hidden="true">✓</span>Caméras IP HD</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Contrôle biométrique</li>
-              <li><span class="check-mini" aria-hidden="true">✓</span>Accès à distance</li>
-            </ul>
-            <div class="service-bottom">
-              <a class="service-link" href="contact.html">Demander un devis →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA FINALE -->
-    <section class="cta-final" id="cta-final">
-      <div class="container">
-        <div class="cta-grid">
-          <div class="reveal">
-            <div class="cta-badge">Audit Offert</div>
-            <h2 class="cta-title">Un besoin spécifique ?</h2>
-            <div class="cta-sub">Nos ingénieurs étudient votre infrastructure et vous proposent une solution sur-mesure.</div>
-            <div class="cta-actions">
-              <a class="btn btn-primary" href="contact.html">Audit Gratuit &amp; Sans Engagement</a>
-            </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Maintenance Préventive & Curative', '<h4>Service de Maintenance Industrielle IT</h4><p style=\'margin:12px 0;\'>Évitez les arrêts de production imprévus grâce à notre programme complet d\'inspection physique et système de votre parc informatique.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Diagnostic prédictif des pannes</li><li>Nettoyage et remplacement de pièces</li><li>Prêt de matériel de secours</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Souscrire un Contrat de Maintenance</a>')">Obtenir un Devis &rarr;</button>
           </div>
 
-          <div class="reveal" style="justify-self:stretch;">
-            <div class="hero-card" style="min-height:unset; box-shadow:none;">
-              <div class="badge-active" style="border-color:rgba(255,255,255,.14);background:rgba(0,0,0,.25);">
-                <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 6px rgba(238,28,37,.15);"></span>
-                Réactivité &amp; Transparence
-              </div>
-              <div style="margin-top:12px; font-family:'Space Grotesk', Inter, sans-serif; font-weight:900; font-size:26px; letter-spacing:-.4px;">
-                Douala • Cameroun
-              </div>
-              <div style="margin-top:12px; color:var(--muted); font-size:14px; max-width:48ch;">
-                Un accompagnement premium, de l’audit à la mise en production — avec une communication claire.
-              </div>
-              <div style="margin-top:14px; display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:16px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); font-weight:900;">
-                <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 0 0 6px rgba(255,255,255,.10);"></span>
-                Priority Elite
-              </div>
+          <!-- Service 5 -->
+          <div class="service-card reveal" data-category="telecom">
+            <img src="telephonie_jarnauld.png" alt="Téléphonie" class="service-card-img">
+            <h3 class="service-title">Téléphonie IP & Télécoms</h3>
+            <p class="service-desc">Installation de standards téléphoniques IP PBX (Asterisk/3CX), téléphones IP d'entreprise, trunks SIP et couplage téléphonie-informatique.</p>
+            <div class="service-tags">
+              <span class="service-tag">VoIP</span>
+              <span class="service-tag">SIP</span>
+              <span class="service-tag">Standard IP</span>
             </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Téléphonie IP & Télécoms', '<h4>Communications Unifiées d\'Entreprise</h4><p style=\'margin:12px 0;\'>Réduisez vos coûts de communication et améliorez le suivi client grâce à un standard IP moderne fonctionnant sur votre réseau informatique existant.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>SVI (Serveur Vocal Interactif)</li><li>Enregistrement et journal d\'appels</li><li>Applications mobiles pour collaborateurs</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Installer un Standard IP</a>')">Obtenir un Devis &rarr;</button>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-card reveal" data-category="infra">
+            <img src="reseau_jarnauld.png" alt="Réseaux" class="service-card-img">
+            <h3 class="service-title">Réseaux Informatiques & Wi-Fi</h3>
+            <p class="service-desc">Conception, routage (Cisco/MikroTik), segmentation VLAN, sécurité Wi-Fi d'entreprise et liaisons VPN sécurisées entre vos sites.</p>
+            <div class="service-tags">
+              <span class="service-tag">LAN / WAN</span>
+              <span class="service-tag">Wi-Fi Pro</span>
+              <span class="service-tag">VPN</span>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Réseaux Informatiques & Wi-Fi', '<h4>Architecture Réseau d\'Entreprise</h4><p style=\'margin:12px 0;\'>Bâtissez un réseau informatique ultra-rapide, sécurisé et prêt pour la très haute vitesse. Séparation des flux invités et professionnels.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Bornes Wi-Fi6 à haute densité</li><li>Pare-feu physique & VPN site-à-site</li><li>Plan d\'adressage IP optimisé</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Auditer mon Réseau</a>')">Obtenir un Devis &rarr;</button>
+          </div>
+
+          <!-- Service 7 -->
+          <div class="service-card reveal" data-category="infra">
+            <img src="cablage_jarnauld.png" alt="Câblage Structuré" class="service-card-img">
+            <h3 class="service-title">Câblage Structuré & Baies</h3>
+            <p class="service-desc">Tirage de câbles Ethernet réseau Cat6A/Cat7, déploiement de liaisons optiques, aménagement de baies de brassage et certification de liens.</p>
+            <div class="service-tags">
+              <span class="service-tag">Câblage</span>
+              <span class="service-tag">Cat6A</span>
+              <span class="service-tag">Fluke</span>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Câblage Structuré & Baies', '<h4>Câblage Réseau Certifié</h4><p style=\'margin:12px 0;\'>Un câblage propre et aux normes est la garantie de la pérennité de votre réseau. Certification officielle de chaque lien avec rapport de testeur Fluke.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Rangement et étiquetage des baies</li><li>Fibre optique inter-bâtiments</li><li>Garantie constructeur 15 ans</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Commander un Câblage</a>')">Obtenir un Devis &rarr;</button>
+          </div>
+
+          <!-- Service 8 -->
+          <div class="service-card reveal" data-category="telecom">
+            <img src="videosurveillance_jarnauld.png" alt="Vidéosurveillance" class="service-card-img">
+            <h3 class="service-title">Vidéosurveillance & Contrôle d'Accès</h3>
+            <p class="service-desc">Systèmes de caméras IP Ultra HD avec vision nocturne, enregistreurs NVR sécurisés, tourniquets et serrures biométriques centralisées.</p>
+            <div class="service-tags">
+              <span class="service-tag">CCTV IP</span>
+              <span class="service-tag">Biométrie</span>
+              <span class="service-tag">Accès Distant</span>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="openModal('Vidéosurveillance & Contrôle d\'Accès', '<h4>Sécurité Physique & Supervision</h4><p style=\'margin:12px 0;\'>Protégez vos locaux professionnels à Douala grâce à notre gamme complète de caméras intelligentes avec détection de mouvement et accès smartphone 24/7.</p><ul style=\'margin-left:20px; margin-bottom:20px;\'><li>Caméras dôme / bullet IP 4K</li><li>Pointeuses biométriques & badges RFID</li><li>Stockage local chiffré RAID</li></ul><a href=\'contact.html\' class=\'btn btn-primary\' style=\'width:100%; text-align:center;\'>Sécuriser mes Locaux</a>')">Obtenir un Devis &rarr;</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact anchor -->
-    <section id="contact" style="padding-top:30px;">
-      <div class="container">
-        <div class="reveal" style="border:1px solid rgba(255,255,255,.10);border-radius:var(--radius2);background:rgba(255,255,255,.03);padding:18px;">
-          <h2 class="section-title" style="font-size:24px;">Contact</h2>
-          <p class="section-sub" style="margin-top:10px;">Utilisez les boutons ci-dessus pour initier une demande. (Action à relier à votre formulaire/contact.)</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;">
-            <a class="btn btn-primary" href="contact.html">Demander un Devis</a>
-            <a class="btn btn-ghost" href="https://wa.me/237654749357">Appeler / WhatsApp</a>
-          </div>
-        </div>
+    <!-- BANNER -->
+    <section class="section section-dark" style="text-align: center;">
+      <div class="container" style="max-width: 700px;">
+        <h2 class="section-title" style="color: #fff;">Un Projet Spécifique ou une Question Technique ?</h2>
+        <p class="section-desc" style="color: #9CA3AF; margin-bottom: 30px;">
+          Nos ingénieurs analysent vos contraintes et conçoivent une architecture sur-mesure adaptée à votre budget.
+        </p>
+        <a href="contact.html" class="btn btn-primary" style="padding: 14px 28px;" data-i18n="devis">Demander un devis</a>
       </div>
     </section>
   </main>
 
-  <footer>
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Titre</h3>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Pied de page unifié -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Col 1 -->
-        <div class="footer-brand">
-          <div class="logo-row">
-            <div class="brand-logo" aria-hidden="true">
-              <img src="./logo.jpeg" alt="">
+        <div>
+          <div class="brand" style="margin-bottom: 16px;">
+            <div class="brand-logo" style="background:#fff;">
+              <img src="logo.png" alt="Logo">
             </div>
-            <div>
-              <div class="brand-name">E-Jarnauld Soft</div>
-              <div class="brand-sub">Solutions Informatiques</div>
-            </div>
+            <span class="footer-brand-title">E-JARNAULD SOFT</span>
           </div>
-
-          <div class="footer-slogan">Cabinet d'ingénierie IT et cybersécurité basé à Douala.</div>
-
-          <div class="footer-social" aria-label="Boutons contact">
-            <a class="social" href="https://wa.me/237654749357" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M20 11.5C20 16.2 16.2 20 11.5 20C9.9 20 8.4 19.6 7.1 18.8L4 20L5.2 16.9C4.4 15.6 4 14.1 4 12.5C4 7.8 7.8 4 12.5 4C17.2 4 21 7.8 21 12.5" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M9.5 9.3C9.7 9 10.1 8.9 10.4 9L11.4 9.4C11.7 9.6 11.9 10 11.8 10.4L11.6 11.0C11.5 11.3 11.6 11.6 11.8 11.8C12.1 12.2 12.5 12.6 12.9 12.8C13.2 13.0 13.5 13.1 13.8 13.0L14.4 12.8C14.8 12.7 15.2 12.9 15.4 13.2L15.8 14.2C15.9 14.5 15.8 14.9 15.5 15.1C15.1 15.4 14.6 15.6 14.1 15.5C13.0 15.3 11.7 14.5 10.8 13.6C9.9 12.7 9.1 11.4 8.9 10.3C8.8 9.8 9 9.3 9.3 8.9" fill="none"/>
-              </svg>
-              WhatsApp
-            </a>
-
-            <a class="social" href="mailto:cust_care@ejs-cm.com" aria-label="Email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 6H20V18H4V6Z" stroke="white" stroke-width="2"/>
-                <path d="M4 7L12 13L20 7" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Email
-            </a>
-
-            <a class="social" href="tel:+237654749357" aria-label="Téléphone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 4h4l2 5-2 1c1 3 3 5 6 6l1-2 5 2v4c-9 0-16-7-16-16Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M16 3h5v5" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Téléphone
-            </a>
-          </div>
+          <p class="footer-desc" data-i18n="footer_slogan">
+            Cabinet d'ingénierie informatique et de cybersécurité basé à Akwa, Douala. Solutions sur-mesure pour PME et grandes institutions.
+          </p>
         </div>
 
-        <!-- Col 2/3/4 -->
-        <div class="footer-quick">
-          <div class="footer-col">
-            <h4>Services</h4>
-            <ul class="footer-list">
-              <li><a href="services.html">Réseau Informatique</a></li>
-              <li><a href="services.html">Infogérance</a></li>
-              <li><a href="services.html">Téléphonie d'Entreprise</a></li>
-              <li><a href="services.html">Télécommunications</a></li>
-              <li><a href="services.html">Vidéosurveillance</a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link" data-i18n-link="accueil">Accueil</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n-link="apropos">À Propos</a></li>
+            <li><a href="services.html" class="footer-link" data-i18n-link="services">Services</a></li>
+            <li><a href="actualites.html" class="footer-link" data-i18n-link="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="footer-link" data-i18n-link="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="footer-link" data-i18n-link="contact">Contact</a></li>
+          </ul>
+        </div>
 
-          <div class="footer-col">
-            <h4>Liens Rapides</h4>
-            <ul class="footer-list">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="about.html">À propos</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="actualites.html">Actualités</a></li>
-              <li><a href="astuces.html">Astuces</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="footer-col-title">Services Piliers</h4>
+          <ul class="footer-links">
+            <li><a href="services.html" class="footer-link">Pen-Testing & Audit Cyber</a></li>
+            <li><a href="services.html" class="footer-link">Sécurisation Cloud</a></li>
+            <li><a href="services.html" class="footer-link">Infogérance 24/7</a></li>
+            <li><a href="services.html" class="footer-link">Câblage Structuré</a></li>
+            <li><a href="services.html" class="footer-link">Vidéosurveillance CCTV</a></li>
+          </ul>
+        </div>
 
-          <div class="footer-col">
-            <h4>Coordonnées</h4>
-            <ul class="footer-list">
-              <li><a href="#">Douala, Cameroun</a></li>
-              <li><a href="mailto:cust_care@ejs-cm.com">cust_care@ejs-cm.com</a></li>
-              <li><a href="tel:+237654749357">+237 654 74 93 57</a></li>
-              <li><a href="#">Réponse moyenne : moins de 2 heures</a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="footer-col-title">Contact & Siège</h4>
+          <p class="footer-link" style="margin-bottom:8px;">📍 Akwa, Douala, Cameroun</p>
+          <p class="footer-link" style="margin-bottom:8px;">📞 +237 690 00 00 00 / WhatsApp</p>
+          <p class="footer-link" style="margin-bottom:16px;">✉️ contact@ejarnauld-soft.cm</p>
+          <a href="contact.html" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" data-i18n="auditGratuit">Audit & Devis gratuit</a>
         </div>
       </div>
 
-      <div class="copyright">
-        <div>© <span id="year"></span> E-Jarnauld Soft. Tous droits réservés.</div>
-        <div class="foot-links">
-          <a href="confidentialite.html" style="color:var(--muted);font-weight:700;">Confidentialité</a>
-          <a href="cgv.html" style="color:var(--muted);font-weight:700;">CGV</a>
+      <div class="footer-bottom">
+        <div>&copy; 2026 E-JARNAULD SOFT. <span data-i18n="rights">Tous droits réservés.</span></div>
+        <div class="footer-legal-links">
+          <a href="cgv.html" class="footer-link" data-i18n="cgv_title">CGV</a>
+          <a href="confidentialite.html" class="footer-link" data-i18n="conf_title">Politique de Confidentialité</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="./i18n.js"></script>
-  <script>
-    // i18n
-    window.i18n?.initI18n?.();
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    const onScroll = () => {
-      if (window.scrollY > 8) navbar.classList.add('is-scrolled');
-      else navbar.classList.remove('is-scrolled');
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // Mobile drawer (robuste)
-    const drawer = document.getElementById('drawer');
-    const menuToggle = document.getElementById('menuToggle');
-    const drawerClose = document.getElementById('drawerClose');
-
-    const setDrawerOpen = (isOpen) => {
-      if (!drawer) return;
-      drawer.classList.toggle('open', isOpen);
-      drawer.setAttribute('aria-hidden', String(!isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    };
-
-    const openDrawer = () => setDrawerOpen(true);
-    const closeDrawer = () => setDrawerOpen(false);
-
-    menuToggle?.addEventListener('click', openDrawer);
-    drawerClose?.addEventListener('click', closeDrawer);
-
-    // Fermer uniquement si on clique sur le backdrop
-    drawer?.addEventListener('click', (e) => {
-      if (!drawer) return;
-      const isBackdropClick = e.target === drawer || e.target?.closest?.('#drawer') === drawer;
-      if (isBackdropClick && !e.target?.closest?.('.drawer-panel')) closeDrawer();
-    });
-
-    drawer?.querySelectorAll('[data-drawer-link]').forEach(a => {
-      a.addEventListener('click', closeDrawer);
-    });
-
-    // Escape
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDrawer();
-    });
-
-
-    // Scroll reveal (IntersectionObserver)
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('is-visible');
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-
-    // Compteur animé
-    const solutionsCountEl = document.getElementById('solutionsCount');
-    const serviceCards = Array.from(document.querySelectorAll('.service-card[data-category]'));
-    const totalSolutions = serviceCards.length;
-
-    const animateCount = (from, to, duration=900) => {
-      const start = performance.now();
-      const step = (now) => {
-        const t = Math.min(1, (now - start) / duration);
-        const val = Math.round(from + (to - from) * (1 - Math.pow(1 - t, 3)));
-        solutionsCountEl.textContent = val;
-        if (t < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-    animateCount(0, totalSolutions);
-
-    // Filtrage (vanilla JS)
-    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
-    const cards = Array.from(document.querySelectorAll('.service-card[data-category]'));
-
-    const setActiveFilter = (filterValue) => {
-      filterButtons.forEach(btn => {
-        const active = btn.getAttribute('data-filter') === filterValue;
-        btn.classList.toggle('is-active', active);
-      });
-    };
-
-    const applyFilter = (filterValue) => {
-      const showAll = filterValue === 'Tous';
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const shouldShow = showAll || cat === filterValue;
-        card.setAttribute('data-hidden', shouldShow ? 'false' : 'true');
-      });
-    };
-
-    // init
-    cards.forEach(card => card.setAttribute('data-hidden', 'false'));
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = btn.getAttribute('data-filter');
-        setActiveFilter(val);
-        applyFilter(val);
-      });
-    });
-
-    // CTA demo
-  </script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
-

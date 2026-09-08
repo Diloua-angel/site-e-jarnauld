@@ -1,448 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>E-JARNAULD SOFT — Solutions Informatiques premium (CGV)</title>
-  <meta name="description" content="E-JARNAULD SOFT — À propos : ingénierie de précision, cybersécurité, infrastructure IT, réseaux intelligents. Exigence, intégrité et support 24/7." />
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-JARNAULD SOFT — Conditions Générales de Vente (CGV)</title>
+  <meta name="description" content="Conditions Générales de Vente (CGV) d'E-JARNAULD SOFT : cadre juridique des prestations informatiques, garanties SLA et modalités de paiement.">
+  <link rel="icon" type="image/png" href="logo.png">
 
-  <!-- Fonts -->
-  <link rel="icon" type="image/png" href="logo1.png">
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-                                    <style>
-/*
-  CSS CORRIGE (sans changer la structure HTML)
-  Objectif: lisibilité totale header/liens/cartes + hover/focus + z-index/overlays
-*/
-:root{
-  --primary:#ee1c25;
-  --primary2:#ee1c25;
-  --bg:#FFFFFF;
-  --text:#0B0B0F;
-  --muted:#4B5563;
-  --muted2:#6B7280;
-  --border:#E5E7EB;
-  --shadow: 0 10px 30px rgba(11,11,15,.08);
-  --radius:18px;
-  --radius2:24px;
-  --max:1180px;
-  --z-header:70;
+  <!-- Stylesheet unifiée -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      --muted:#978d8d;
-      --muted2:#6b6b78;
-      --border:rgba(14, 14, 19, 0.1);
-      --shadow: 0 18px 60px rgba(0,0,0,.12);
-      --radius:18px;
-      --radius2:24px;
-      --max:1180px;
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-body{
-      margin:0;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(238,28,37,.14), transparent 55%),
-        radial-gradient(900px 500px at 85% 10%, rgba(238,28,37,.10), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.5;
-      overflow-x:hidden;
-    }
-
-a{ color:inherit; text-decoration:none; }
-a:focus-visible{ outline:2px solid rgba(238,28,37,.6); outline-offset:3px; border-radius:10px; }
-a:hover{ color:inherit; }
-a:visited{ color:inherit; }
-
-    img{ max-width:100%; display:block; }
-
-    .container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
-
-    /* Navbar (identique à index.html) */
-    .navbar{
-      position:fixed; top:0; left:0; right:0;
-      z-index:var(--z-header);
-      background: rgba(255,255,255,.95);
-      border-bottom:1px solid rgba(229,231,235,.75);
-      transition: all .25s ease;
-    }
-    .navbar.is-scrolled{
-      background: rgba(255,255,255,.98);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:14px; }
-
-    .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
-    .brand-logo{
-      width:40px; 
-      height:40px; 
-      /*border-radius:12px;*/
-      border-radius: 0;
-      /*background: linear-gradient(145deg, rgba(238,28,37,.18), rgba(255,255,255,.04));*/
-      background: none;
-      /*border:1px solid rgba(238,28,37,.12);*/
-      border: none;
-      display:grid; place-items:center;
-      /*box-shadow: 0 14px 35px rgba(0,0,0,.20);
-      overflow:hidden; */
-      box-shadow: none;
-      overflow: visible;
-    }
-    .brand-logo img{ 
-      width:100%; 
-      height:100%; 
-      /*object-fit:cover; */
-      object-fit: contain;
-      /*filter:saturate(1.1) contrast(1.05); */
-      filter: none;
-    }
-    .brand-text{ min-width:0; }
-    .brand-name{ font-family:'Space Grotesk', Inter, system-ui, sans-serif; font-weight:700; letter-spacing:.2px; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--text); }
-    .brand-sub{ font-size:12px; color:rgba(75,85,99,.9); margin-top:2px; }
-
-    .nav-links{ display:none; align-items:center; gap:22px; }
-    .nav-links a{
-      color: rgba(17,17,17,.86) !important;
-      font-size:13px;
-      padding:10px 0;
-      position:relative;
-      font-weight:700;
-      letter-spacing:.1px;
-    }
-    .nav-links a::after{ content:''; position:absolute; left:0; bottom:6px; width:0; height:2px; background: var(--primary2); transition: width .2s ease; }
-    .nav-links a:hover::after{ width:100%; }
-    .nav-links a:hover{ color: rgba(238,28,37,.95) !important; }
-    .nav-links a.is-active{ color: rgba(238,28,37,.98) !important; }
-    .nav-links a.is-active::after{ width:100%; }
-
-    .nav-actions{ display:flex; align-items:center; gap:10px; }
-
-    .btn{
-      border:1px solid rgba(229,231,235,.95);
-      background: transparent;
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:14px;
-      font-size:13px;
-      font-weight:700;
-      cursor:pointer;
-      transition: transform .15s ease, border-color .2s ease, background .2s ease, opacity .2s ease;
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      user-select:none; white-space:nowrap;
-    }
-    .btn:active{ transform: translateY(1px); }
-    .btn:hover{ border-color: rgba(238,28,37,.45); }
-
-    .btn-primary{
-      background: var(--primary2);
-      border-color: var(--primary2);
-      box-shadow: 0 10px 30px rgba(238,28,37,.18);
-      color:#FFFFFF;
-    }
-    .btn-primary:hover{ filter: brightness(0.98); }
-
-    .btn-ghost{
-      border-color: rgba(229,231,235,.95);
-      color: var(--text);
-      background: transparent;
-    }
-
-    .menu-toggle{
-      width:44px; height:44px;
-      display:grid; place-items:center;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.18);
-      background: rgba(0,0,0,.06);
-      cursor:pointer;
-    }
-
-/* Conteneur principal des CGV */
-.cgv-container {
-    width: min(1100px, 92%);
-    margin: 30px auto;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1f2937;
-    line-height: 1.7;
-}
-
-/* Sections */
-.cgv-section {
-    margin-bottom: 18px;
-    padding: 22px 25px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-}
-
-.cgv-section h2 {
-    margin: 0 0 12px;
-    color: #0f172a;
-    font-size: 21px;
-    cursor: pointer;
-}
-
-.cgv-section h2::after {
-    content: "＋";
-    float: right;
-    color: #2563eb;
-}
-
-.cgv-section.active h2::after {
-    content: "−";
-}
-
-.cgv-section p {
-    margin: 8px 0;
-}
-
-/* Grille des services */
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-/* Carte d'un service */
-.service-card {
-    padding: 20px;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background: #f8fafc;
-}
-
-.service-card h3 {
-    margin: 8px 0;
-    color: #1d4ed8;
-}
-
-.service-card p {
-    margin: 0;
-}
-
-.service-icon {
-    font-size: 30px;
-}
-
-/* Section importante */
-.important {
-    border: 2px solid #f59e0b;
-}
-
-/* Encadré d'avertissement */
-.warning-box {
-    padding: 18px;
-    background: #fff7ed;
-    border-left: 5px solid #f59e0b;
-    border-radius: 8px;
-}
-
-.warning-box strong {
-    color: #c2410c;
-}
-
-/* Encadré d'information */
-.info-box {
-    margin: 15px 0;
-    padding: 15px;
-    background: #eff6ff;
-    border-left: 5px solid #2563eb;
-    border-radius: 8px;
-}
-
-/* Section d'acceptation */
-.acceptance {
-    border: 2px solid #2563eb;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-    .cgv-container {
-        width: 94%;
-        margin: 20px auto;
-    }
-
-    .service-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cgv-section {
-        padding: 18px;
-    }
-}
-
-/* Impression */
-@media print {
-    .cgv-container {
-        width: 100%;
-        margin: 0;
-    }
-
-    .cgv-section {
-        box-shadow: none;
-        break-inside: avoid;
-    }
-
-    .cgv-section h2::after {
-        display: none;
-    }
-}
-
-    /* Footer */
-    footer{ padding:44px 0 26px; border-top:1px solid rgba(252, 252, 252, 0.08); }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:20px;
-    }
-
-    .footer-brand{ display:flex; flex-direction:column; gap:12px; }
-    .footer-brand .logo-row{ display:flex; align-items:center; gap:12px; }
-    .footer-slogan{ color: var(--muted); font-size:14px; max-width:52ch; }
-
-    .footer-social{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:6px;
-    }
-
-    .social{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      font-weight:900;
-      font-size:13px;
-      color: rgba(0, 0, 0, 0.95);
-      z-index: 5;
-      position: relative;
-    }
-
-    /* Forcer contraste sur fond clair (comme page services) */
-    footer .social{
-      color: rgba(17,17,17,.92) !important;
-      background: rgba(255,255,255,.65) !important;
-      border:1px solid rgba(229,231,235,.95) !important;
-    }
-    footer .social svg path{ stroke: rgba(17,17,17,.92) !important; }
-    footer .social:hover{
-      background: rgba(112,112,112, 0.96) !important;
-      border-color: rgba(87,86,86, 0.96) !important;
-      color: #fffdfd !important;
-    }
-    footer .social:hover svg path{ stroke: #ffffff !important; }
-
-    .footer-quick{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-
-    .footer-col{
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.02);
-      border:1px solid rgba(229,231,235,.50);
-      padding:14px;
-    }
-
-    .footer-col h4{
-      margin:0;
-      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-      font-weight:1000;
-      letter-spacing:-.2px;
-      font-size:14px;
-      color: rgba(17,17,17,.92);
-    }
-
-    .footer-list{
-      margin:12px 0 0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .footer-list a{
-      color: var(--muted);
-      font-size:14px;
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .footer-list a:hover{ color: var(--primary2); }
-
-    .copyright{ margin-top:22px; color: var(--muted2); font-size:13px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
-    .foot-links{ display:flex; gap:16px; flex-wrap:wrap; }
-
-    @media (min-width: 820px){
-      .nav-links{ display:flex; }
-      .menu-toggle{ display:none; }
-      .hero-grid{ grid-template-columns: 1.1fr .9fr; gap:22px; }
-      .card-grid-2{ grid-template-columns: 1fr 1fr; }
-      .vision-grid{ grid-template-columns: 1fr .95fr; }
-      .numbers-grid{ grid-template-columns: repeat(3, 1fr); }
-      .team-grid{ grid-template-columns: 1fr 1fr; }
-      .cta-grid{ grid-template-columns: 1.25fr .75fr; }
-      .footer-grid{ grid-template-columns: 1.1fr .9fr; }
-      .footer-quick{ grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (max-width: 520px){
-      .team-grid{ grid-template-columns: 1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .reveal{ transition:none; }
-    }
-      
-    </style>
-
-    </head>
-    <body>
-  <!-- Navbar -->
-  <header class="navbar" id="top">
+  <!-- Navbar Fixe -->
+  <header class="navbar">
     <div class="container">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="E-JARNAULD SOFT">
-          <div class="brand-logo" aria-hidden="true">
-            <img src="logo1.png" alt="Logo de l'entreprise">
+        <a class="brand" href="index.html" aria-label="E-JARNAULD SOFT">
+          <div class="brand-logo">
+            <img src="logo.png" alt="E-JARNAULD SOFT Logo">
           </div>
           <div class="brand-text">
-            <div class="brand-name">E-Jarnauld Soft</div>
-            <div class="brand-sub">Solutions Informatiques</div>
+            <span class="brand-name">E-JARNAULD SOFT</span>
+            <span class="brand-sub">Solutions Informatiques</span>
           </div>
         </a>
 
-<nav class="nav-links" aria-label="Navigation principale">
-          <a data-i18n-link="accueil" href="index.html">Accueil</a>
-          <a data-i18n-link="apropos" href="about.html" class="is-active">À Propos</a>
-          <a data-i18n-link="services" href="services.html">Services</a>
-          <a data-i18n-link="actualites" href="actualites.html">Actualités</a>
-          <a data-i18n-link="astuces" href="astuces.html">Astuces</a>
-          <a data-i18n-link="contact" href="contact.html">Contact</a>
+        <nav aria-label="Navigation principale">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link" data-i18n-link="accueil">Accueil</a></li>
+            <li><a href="about.html" class="nav-link" data-i18n-link="apropos">À Propos</a></li>
+            <li><a href="services.html" class="nav-link" data-i18n-link="services">Services</a></li>
+            <li><a href="actualites.html" class="nav-link" data-i18n-link="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="nav-link" data-i18n-link="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="nav-link" data-i18n-link="contact">Contact</a></li>
+          </ul>
         </nav>
 
         <div class="nav-actions">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <button type="button" class="btn btn-ghost" data-lang-toggle="fr" aria-pressed="true">FR</button>
-            <button type="button" class="btn btn-ghost" data-lang-toggle="en" aria-pressed="false">EN</button>
+          <div class="lang-switcher" aria-label="Sélecteur de langue">
+            <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
           </div>
-          <a class="btn btn-primary" href="contact.html" aria-label="Demander un Devis">Demander un Devis</a>
-          <button class="menu-toggle" type="button" id="menuToggle" aria-label="Ouvrir le menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M4 7H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-<path d="M4 12H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
-<path d="M4 17H20" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round"/>
+          <a href="contact.html" class="btn btn-primary" data-i18n="devis">Demander un devis</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
         </div>
@@ -450,406 +60,163 @@ a:visited{ color:inherit; }
     </div>
   </header>
 
-    <main class="cgv-container">
-
-    <!-- Introduction -->
-    <section class="cgv-section">
-        <h2>1. Objet</h2>
-        <p>
-            Les présentes Conditions Générales de Vente (CGV) définissent les
-            conditions applicables aux prestations et produits proposés par le
-            cabinet informatique.
-        </p>
-        <p>
-            Le cabinet intervient notamment dans les domaines du réseau et de la
-            sécurité informatique, du développement d'applications ainsi que de la
-            vente de matériels informatiques et de télécommunication.
-        </p>
-    </section>
-
-    <!-- Prestations proposées -->
-    <section class="cgv-section">
-        <h2>2. Prestations proposées</h2>
-
-        <div class="service-grid">
-
-            <!-- Réseau -->
-            <article class="service-card">
-                <span class="service-icon">🌐</span>
-                <h3>Réseau & Télécommunication</h3>
-                <p>
-                    Installation, configuration, maintenance et dépannage des
-                    réseaux informatiques et des équipements de télécommunication.
-                </p>
-            </article>
-
-            <!-- Sécurité -->
-            <article class="service-card">
-                <span class="service-icon">🔐</span>
-                <h3>Sécurité informatique</h3>
-                <p>
-                    Mise en place de solutions de protection, sécurisation des
-                    réseaux, contrôle des accès et configuration des équipements.
-                </p>
-            </article>
-
-            <!-- Développement -->
-            <article class="service-card">
-                <span class="service-icon">💻</span>
-                <h3>Développement d'applications</h3>
-                <p>
-                    Conception et développement de sites web, applications,
-                    logiciels et solutions informatiques personnalisées.
-                </p>
-            </article>
-
-            <!-- Vente -->
-            <article class="service-card">
-                <span class="service-icon">🖥️</span>
-                <h3>Vente de matériel</h3>
-                <p>
-                    Vente de matériels informatiques, équipements réseau,
-                    équipements télécom et accessoires.
-                </p>
-            </article>
-
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer" id="drawer" aria-label="Menu mobile">
+    <div class="drawer-header">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Logo">
         </div>
-    </section>
-
-    <!-- Devis et commande -->
-    <section class="cgv-section">
-        <h2>3. Devis et commande</h2>
-        <p>
-            Toute prestation peut faire l'objet d'un devis précisant les travaux,
-            produits, délais et tarifs applicables.
-        </p>
-        <p>
-            La validation du devis ou la confirmation de la commande par le client
-            vaut acceptation des présentes CGV.
-        </p>
-    </section>
-
-    <!-- Prix et paiement -->
-    <section class="cgv-section">
-        <h2>4. Prix et modalités de paiement</h2>
-        <p>
-            Les prix des prestations et produits sont communiqués au client avant
-            la réalisation des travaux.
-        </p>
-        <p>
-            Le cabinet peut demander un acompte avant le début des travaux,
-            notamment lorsque le projet nécessite l'achat de matériel ou la
-            réalisation d'une solution spécifique.
-        </p>
-        <p>
-            Le solde doit être réglé conformément aux modalités convenues avec
-            le client.
-        </p>
-    </section>
-
-    <!-- Déplacement -->
-    <section class="cgv-section">
-        <h2>5. Déplacement et intervention sur site</h2>
-        <p>
-            Le cabinet peut se déplacer chez le client afin d'effectuer
-            l'installation, la configuration, la maintenance ou le dépannage des
-            équipements informatiques, réseau et télécommunication.
-        </p>
-        <p>
-            Les frais de déplacement, lorsqu'ils sont applicables, sont communiqués
-            au client avant l'intervention.
-        </p>
-        <p>
-            Le client doit garantir l'accès au site et fournir les conditions
-            nécessaires à la réalisation des travaux.
-        </p>
-    </section>
-
-    <!-- Installation réseau -->
-    <section class="cgv-section">
-        <h2>6. Installation des équipements réseau et télécom</h2>
-        <p>
-            Le cabinet peut assurer la pose, le raccordement, la configuration et
-            la mise en service des équipements réseau et télécommunication,
-            notamment les routeurs, switchs, points d'accès Wi-Fi, câblages,
-            caméras et autres équipements convenus avec le client.
-        </p>
-        <p>
-            Une fois l'installation terminée, le client est invité à vérifier le
-            fonctionnement des équipements et à signaler toute anomalie constatée.
-        </p>
-    </section>
-
-    <!-- Développement -->
-    <section class="cgv-section">
-        <h2>7. Développement de sites et applications</h2>
-        <p>
-            Pour les projets de développement, le cabinet réalise les travaux
-            conformément aux fonctionnalités et spécifications convenues avec
-            le client.
-        </p>
-        <p>
-            Le client doit fournir toutes les informations nécessaires à la
-            réalisation du projet et valider les éléments qui lui sont soumis.
-        </p>
-    </section>
-
-    <!-- Livraison -->
-    <section class="cgv-section important">
-        <h2>8. Livraison, validation et remboursement</h2>
-
-        <div class="warning-box">
-            <strong>Clause importante</strong>
-
-            <p>
-                Après livraison d'un site web, d'une application, d'une solution
-                informatique ou après achèvement des travaux convenus, le client
-                doit vérifier la conformité de la prestation avec le devis ou le
-                cahier des charges accepté.
-            </p>
-
-            <p>
-                Lorsque la prestation a été réalisée conformément à la commande
-                et qu'elle a été livrée ou validée par le client, aucun remboursement
-                ne pourra être demandé pour les travaux réalisés.
-            </p>
-
-            <p>
-                Le démarrage de l'utilisation de la solution livrée par le client
-                constitue également une confirmation de la réception de la
-                prestation, sous réserve des éventuelles corrections liées à une
-                non-conformité au cahier des charges.
-            </p>
+        <div class="brand-text">
+          <span class="brand-name" style="color:#fff;">E-JARNAULD SOFT</span>
+          <span class="brand-sub">Solutions IT</span>
         </div>
-    </section>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fermer le menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" class="drawer-link" data-i18n-link="accueil">Accueil</a></li>
+      <li><a href="about.html" class="drawer-link" data-i18n-link="apropos">À Propos</a></li>
+      <li><a href="services.html" class="drawer-link" data-i18n-link="services">Services</a></li>
+      <li><a href="actualites.html" class="drawer-link" data-i18n-link="actualites">Actualités</a></li>
+      <li><a href="astuces.html" class="drawer-link" data-i18n-link="astuces">Astuces</a></li>
+      <li><a href="contact.html" class="drawer-link" data-i18n-link="contact">Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <div class="lang-switcher" style="justify-content: center;">
+        <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="contact.html" class="btn btn-primary" style="width:100%; text-align:center;" data-i18n="devis">Demander un devis</a>
+    </div>
+  </div>
 
-    <!-- Modifications -->
-    <section class="cgv-section">
-        <h2>9. Modifications supplémentaires</h2>
-
-        <p>
-            Toute modification demandée après la livraison ou la validation de la
-            prestation et qui ne faisait pas partie du devis initial est considérée
-            comme une prestation supplémentaire.
-        </p>
-
-        <div class="info-box">
-            <strong>Exemple :</strong>
-
-            <p>
-                L'ajout de nouvelles fonctionnalités, de nouvelles pages,
-                la modification importante de l'interface, l'ajout de nouveaux
-                modules ou toute autre demande non prévue dans la commande initiale
-                fera l'objet d'une nouvelle facturation.
-            </p>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">
+            <span class="dot"></span>
+            <span>Cadre Légal & Engagements</span>
+          </div>
+          <h1 class="section-title">Conditions Générales de Vente <span class="text-primary">(CGV)</span></h1>
+          <p class="section-desc">
+            Régissant l'ensemble des prestations d'ingénierie informatique, de cybersécurité et de maintenance assurées par E-JARNAULD SOFT au Cameroun.
+          </p>
         </div>
-
-        <p>
-            Le cabinet communiquera le coût de la modification
-            avant son exécution.
-        </p>
+      </div>
     </section>
 
-    <!-- Matériel -->
-    <section class="cgv-section">
-        <h2>10. Vente de matériels informatiques</h2>
-        <p>
-            Les matériels vendus sont ceux indiqués sur le devis, la facture ou
-            le bon de commande.
-        </p>
-        <p>
-            Le client est responsable de vérifier la conformité du matériel
-            réceptionné avec sa commande.
-        </p>
-        <p>
-            Les conditions de garantie applicables aux équipements dépendent
-            notamment du fabricant, du fournisseur et de la nature du matériel.
-        </p>
-    </section>
+    <!-- CONTENT -->
+    <section class="section section-surface" style="padding-top: 20px;">
+      <div class="container" style="max-width: 900px;">
+        <div style="background-color: var(--bg); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm); line-height: 1.8;" class="reveal">
+          
+          <h3 style="font-family: var(--font-heading); color: var(--dark); font-size: 1.35rem; margin-bottom: 12px;">Article 1 — Champ d'Application</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">
+            Les présentes Conditions Générales de Vente (CGV) s'appliquent à l'ensemble des services informatiques, audits de cybersécurité, contrats d'infogérance, ventes de matériel et installations de câblage réalisés par la société E-JARNAULD SOFT pour le compte de ses clients professionnels et institutionnels.
+          </p>
 
-    <!-- Responsabilité du client -->
-    <section class="cgv-section">
-        <h2>11. Responsabilité du client</h2>
-        <p>
-            Le client est responsable des informations, contenus, données,
-            identifiants et documents qu'il fournit au cabinet dans le cadre
-            de la prestation.
-        </p>
-        <p>
-            Le client doit conserver ses propres copies de sauvegarde des données
-            importantes avant toute intervention susceptible de modifier ou
-            déplacer ces données.
-        </p>
-    </section>
+          <h3 style="font-family: var(--font-heading); color: var(--dark); font-size: 1.35rem; margin-bottom: 12px;">Article 2 — Devis et Commandes</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">
+            Toute intervention fait l'objet d'un devis préalable gratuit établi par E-JARNAULD SOFT. La commande devient définitive dès réception du devis signé portant la mention manuscrite "Bon pour accord" ou validation écrite équivalente, accompagnée du versement d'un acompte le cas échéant.
+          </p>
 
-    <!-- Confidentialité -->
-    <section class="cgv-section">
-        <h2>12. Données et confidentialité</h2>
-        <p>
-            Le cabinet s'engage à traiter de manière confidentielle les informations
-            auxquelles il pourrait avoir accès dans le cadre de l'exécution de ses
-            prestations.
-        </p>
-        <p>
-            Les informations confidentielles du client ne doivent pas être
-            communiquées à des tiers sans autorisation, sauf obligation légale ou
-            nécessité technique liée à l'exécution de la prestation.
-        </p>
-    </section>
+          <h3 style="font-family: var(--font-heading); color: var(--dark); font-size: 1.35rem; margin-bottom: 12px;">Article 3 — Niveaux de Service (SLA) & Délais</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">
+            E-JARNAULD SOFT s'engage sur un délai d'intervention moyen inférieur à 2 heures pour tout incident bloquant couvert par un contrat d'infogérance actif dans la zone urbaine de Douala. Les délais d'exécution des projets d'infrastructure sont stipulés dans le cahier des charges validé.
+          </p>
 
-    <!-- Délais -->
-    <section class="cgv-section">
-        <h2>13. Délais d'exécution</h2>
-        <p>
-            Les délais annoncés sont estimatifs et dépendent notamment de la
-            disponibilité du matériel, de la complexité du projet, de la
-            disponibilité des informations nécessaires et de la coopération
-            du client.
-        </p>
-        <p>
-            Tout retard résultant d'une modification de la demande du client,
-            d'un retard dans la fourniture des informations ou d'un événement
-            indépendant de la volonté du cabinet peut entraîner une modification
-            du délai initialement prévu.
-        </p>
-    </section>
+          <h3 style="font-family: var(--font-heading); color: var(--dark); font-size: 1.35rem; margin-bottom: 12px;">Article 4 — Tarifs et Modalités de Paiement</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">
+            Les prix des prestations sont indiqués en Francs CFA (XAF) Hors Taxes. Sauf stipulation contraire sur la facture, le règlement s'effectue par virement bancaire, chèque ou paiement sécurisé sous 30 jours à compter de la date d'émission de la facture.
+          </p>
 
-    <!-- Maintenance -->
-    <section class="cgv-section">
-        <h2>14. Maintenance et assistance</h2>
-        <p>
-            Les opérations de maintenance, d'assistance ou de dépannage réalisées
-            après la livraison sont facturées selon les conditions convenues avec
-            le client, sauf lorsqu'elles sont expressément couvertes par une
-            garantie ou un contrat de maintenance.
-        </p>
-    </section>
+          <h3 style="font-family: var(--font-heading); color: var(--dark); font-size: 1.35rem; margin-bottom: 12px;">Article 5 — Confidentialité & Propriété Intellectuelle</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">
+            E-JARNAULD SOFT s'engage à préserver la confidentialité absolue des données, identifiants réseau et codes sources auxquels ses ingénieurs accèdent dans le cadre de leurs missions. Un Accord de Confidentialité (NDA) spécifique peut être signé sur demande du client.
+          </p>
 
-    <!-- Acceptation -->
-    <section class="cgv-section acceptance">
-        <h2>15. Acceptation des CGV</h2>
-        <p>
-            La validation d'un devis, la signature d'un bon de commande,
-            le paiement d'un acompte ou la confirmation d'une commande implique
-            l'acceptation des présentes Conditions Générales de Vente.
-        </p>
-    </section>
-
-</main>
-
-    <!-- Footer (premium refonte identique à index.html) -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <!-- Col 1 -->
-        <div class="footer-brand">
-          <div class="logo-row">
-            <div class="brand-logo" aria-hidden="true">
-              <img src="logo1.png" alt="Logo de l'entreprise">
-            </div>
-            <div>
-              <div class="brand-name">E-Jarnauld Soft</div>
-              <div class="brand-sub">Solutions Informatiques</div>
-            </div>
-          </div>
-
-          <div class="footer-slogan">Cabinet d'ingénierie IT et cybersécurité basé à Douala.</div>
-
-          <div class="footer-social" aria-label="Boutons contact">
-            <a class="social" href="https://wa.me/237654749357" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M20 11.5C20 16.2 16.2 20 11.5 20C9.9 20 8.4 19.6 7.1 18.8L4 20L5.2 16.9C4.4 15.6 4 14.1 4 12.5C4 7.8 7.8 4 12.5 4C17.2 4 21 7.8 21 12.5" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M9.5 9.3C9.7 9 10.1 8.9 10.4 9L11.4 9.4C11.7 9.6 11.9 10 11.8 10.4L11.6 11C11.5 11.3 11.6 11.6 11.8 11.8C12.1 12.2 12.5 12.6 12.9 12.8C13.2 13 13.5 13.1 13.8 13L14.4 12.8C14.8 12.7 15.2 12.9 15.4 13.2L15.8 14.2C15.9 14.5 15.8 14.9 15.5 15.1C15.1 15.4 14.6 15.6 14.1 15.5C13 15.3 11.7 14.5 10.8 13.6C9.9 12.7 9.1 11.4 8.9 10.3C8.8 9.8 9 9.3 9.3 8.9" fill="none"/>
-              </svg>
-              WhatsApp
-            </a>
-
-            <a class="social" href="mailto:cust_care@ejs-cm.com" aria-label="Email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 6H20V18H4V6Z" stroke="white" stroke-width="2"/>
-                <path d="M4 7L12 13L20 7" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Email
-            </a>
-
-            <a class="social" href="tel:+237654749357" aria-label="Téléphone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 4h4l2 5-2 1c1 3 3 5 6 6l1-2 5 2v4c-9 0-16-7-16-16Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M16 3h5v5" stroke="#ee1c25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Téléphone
-            </a>
-          </div>
-        </div>
-
-        <!-- Col 2 -->
-        <div class="footer-quick">
-          <div class="footer-col">
-            <h4>Services</h4>
-            <ul class="footer-list">
-              <li><a href="services.html">Réseau Informatique</a></li>
-              <li><a href="services.html">Infogérance</a></li>
-              <li><a href="services.html">Téléphonie d'Entreprise</a></li>
-              <li><a href="services.html">Télécommunications</a></li>
-              <li><a href="services.html">Vidéosurveillance</a></li>
-            </ul>
-          </div>
-
-          <!-- Col 3 -->
-          <div class="footer-col">
-            <h4>Liens Rapides</h4>
-            <ul class="footer-list">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="about.html">À propos</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="actualites.html">Actualités</a></li>
-              <li><a href="astuces.html">Astuces</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Col 4 -->
-          <div class="footer-col">
-            <h4>Coordonnées</h4>
-            <ul class="footer-list">
-              <li><a href="#">Douala, Cameroun</a></li>
-              <li><a href="mailto:cust_care@ejs-cm.com">cust_care@ejs-cm.com</a></li>
-              <li><a href="tel:+237654749357">+237 654 74 93 57</a></li>
-              <li><a href="#">Réponse moyenne : moins de 2 heures</a></li>
-            </ul>
+          <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center;">
+            <p style="color: var(--text-subtle); font-size: 0.875rem;">Dernière mise à jour : Janvier 2026 — E-JARNAULD SOFT Douala, Cameroun</p>
           </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="copyright">
-        <div>© <span id="year"></span> E-Jarnauld Soft. Tous droits réservés.</div>
-        <div class="foot-links">
-          <a href="confidentialite.html" style="color:var(--muted);font-weight:700;">Confidentialité</a>
-          <a href="cgv.html" style="color:var(--muted);font-weight:700;">CGV</a>
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Titre</h3>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Pied de page unifié -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: 16px;">
+            <div class="brand-logo" style="background:#fff;">
+              <img src="logo.png" alt="Logo">
+            </div>
+            <span class="footer-brand-title">E-JARNAULD SOFT</span>
+          </div>
+          <p class="footer-desc" data-i18n="footer_slogan">
+            Cabinet d'ingénierie informatique et de cybersécurité basé à Akwa, Douala. Solutions sur-mesure pour PME et grandes institutions.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link" data-i18n-link="accueil">Accueil</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n-link="apropos">À Propos</a></li>
+            <li><a href="services.html" class="footer-link" data-i18n-link="services">Services</a></li>
+            <li><a href="actualites.html" class="footer-link" data-i18n-link="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="footer-link" data-i18n-link="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="footer-link" data-i18n-link="contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Services Piliers</h4>
+          <ul class="footer-links">
+            <li><a href="services.html" class="footer-link">Pen-Testing & Audit Cyber</a></li>
+            <li><a href="services.html" class="footer-link">Sécurisation Cloud</a></li>
+            <li><a href="services.html" class="footer-link">Infogérance 24/7</a></li>
+            <li><a href="services.html" class="footer-link">Câblage Structuré</a></li>
+            <li><a href="services.html" class="footer-link">Vidéosurveillance CCTV</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Contact & Siège</h4>
+          <p class="footer-link" style="margin-bottom:8px;">📍 Akwa, Douala, Cameroun</p>
+          <p class="footer-link" style="margin-bottom:8px;">📞 +237 690 00 00 00 / WhatsApp</p>
+          <p class="footer-link" style="margin-bottom:16px;">✉️ contact@ejarnauld-soft.cm</p>
+          <a href="contact.html" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" data-i18n="auditGratuit">Audit & Devis gratuit</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 E-JARNAULD SOFT. <span data-i18n="rights">Tous droits réservés.</span></div>
+        <div class="footer-legal-links">
+          <a href="cgv.html" class="footer-link" data-i18n="cgv_title">CGV</a>
+          <a href="confidentialite.html" class="footer-link" data-i18n="conf_title">Politique de Confidentialité</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Script pour ouvrir et fermer les différentes sections -->
-<script src="./i18n.js"></script>
-<script>
-  window.i18n?.initI18n?.();
-  document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));
-
-    document.querySelectorAll(".cgv-section h2").forEach((title) => {
-        title.addEventListener("click", () => {
-            const section = title.parentElement;
-            section.classList.toggle("active");
-        });
-    });
-
-    // Ouvre toutes les sections lors de l'impression
-    window.addEventListener("beforeprint", () => {
-        document.querySelectorAll(".cgv-section").forEach((section) => {
-            section.classList.add("active");
-        });
-    });
-</script>
-
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+</body>
 </html>
