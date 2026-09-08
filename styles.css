@@ -1116,10 +1116,24 @@ textarea.form-control {
 
 /* Footer */
 .footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image: url('en/footer.png');
+  background-size: cover;
+  background-position: center 42%;
   background-color: var(--dark);
   color: var(--text-white);
   padding: 80px 0 30px;
   border-top: 1px solid var(--dark-border);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.72);
+  z-index: -1;
 }
 
 .footer-grid {
@@ -1167,6 +1181,23 @@ textarea.form-control {
 
 .footer-link:hover {
   color: var(--primary);
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-contact svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .footer-bottom {
