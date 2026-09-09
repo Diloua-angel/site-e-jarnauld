@@ -128,6 +128,7 @@
     <section class="section section-surface" style="padding-top: 40px;">
       <div class="container">
         <div class="card-grid">
+
           <!-- Tip 1 -->
           <div class="item-card reveal" data-category="shortcuts">
             <div class="item-card-header">
@@ -174,7 +175,7 @@
             <div class="item-card-body">
               <p>Fini les mots de passe oubliés ou trop simples. Découvrez la méthode de la "phrasemot" recommandée par les experts en cybersécurité.</p>
               <div class="item-card-footer">
-                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Méthode de la Phrasemot', '<h4>Comment créer une phrasemot forte :</h4><p style=\'margin:12px 0;\'>Au lieu de choisir un seul mot complexe comme <i>P@ssw0rd!</i>, prenez une phrase personnelle et associez la première lettre de chaque mot avec des chiffres et symboles.</p><p style=\'background:#f1f5f9; padding:12px; border-radius:8px;\'>Exemple : <strong>"J\'habite à Douala au Cameroun depuis 2020 !"</strong> &rarr; <code>J\'h@DaCdp2020!</code></p>')">Voir la méthode &rarr;</button>
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Méthode de la Phrasemot', '<h4>Comment créer une phrasemot forte :</h4><p style=\'margin:12px 0;\'>Au lieu de choisir un seul mot complexe comme <i>P@ssw0rd!</i>, prenez une phrase personnelle et associez la première lettre de chaque mot avec des chiffres et symboles.</p><p style=\'background:#f1f5f9; padding:12px; border-radius:8px;\'>Exemple : <strong>"J/'habite à Douala au Cameroun depuis 2020 !"</strong> &rarr; <code>J\'h@DaCdp2020!</code></p>')">Voir la méthode &rarr;</button>
               </div>
             </div>
           </div>
@@ -192,6 +193,91 @@
               <p>Problème fréquent d'adressage IP ou de DNS. Voici la séquence de commandes Invite de commande (CMD) pour réinitialiser votre carte réseau.</p>
               <div class="item-card-footer">
                 <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Réinitialiser le Réseau Wi-Fi', '<h4>Séquence de Réinitialisation CMD :</h4><p style=\'margin:12px 0;\'>Ouvrez l\'Invite de commandes (CMD) en tant qu\'administrateur et exécutez ces lignes :</p><pre style=\'background:#09090b; color:#fff; padding:16px; border-radius:8px; font-size:0.85rem;\'>ipconfig /flushdns\nnetsh winsock reset\nnetsh int ip reset</pre><p style=\'margin-top:12px;\'>Redémarrez ensuite votre ordinateur pour valider la reconnexion.</p>')">Voir les commandes &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tip 5 -->
+          <div class="item-card reveal" data-category="network">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Dépannage</span>
+                <span>Windows 10/11</span>
+              </div>
+              <h3 class="item-card-title">PC lent ou applications qui se figent ?</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Souvent lié à un cache système saturé ou à des fichiers temporaires encombrants.</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Amelioration de la reactivite du PC', '<h4>Séquence de Réinitialisation CMD :</h4><p style=\'margin:12px 0;\'>Ouvrez l\'Invite de commandes (CMD) en tant qu\'administrateur et exécutez successivement ces lignes :</p><pre style=\'background:#09090b; color:#fff; padding:16px; border-radius:8px; font-size:0.85rem;\'>sfc /scannow\nDISM /Online /Cleanup-Image /RestoreHealth\nclenmgr</pre><p style=\'margin-top:12px;\'>Redémarrez ensuite votre ordinateur pour permettre une bonne analyse et reparation du syteme.</p>')">Voir les commandes &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tip 6 -->
+          <div class="item-card reveal" data-category="network">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Securite</span>
+                <span>Reseau</span>
+              </div>
+              <h3 class="item-card-title">Bloquer les connexions non autorisees</h3>
+            </div>
+            <div class="item-card-body">
+              <p>ACtiver le pare-feu windows avec :</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Activation du pare-feu Windows', '<h4>Séquence de Réinitialisation CMD :</h4><p style=\'margin:12px 0;\'>Ouvrez l\'Invite de commandes (CMD) en tant qu\'administrateur et exécutez cette ligne :</p><pre style=\'background:#09090b; color:#fff; padding:16px; border-radius:8px; font-size:0.85rem;\'netsh advfirewall set allprofiles state on</pre><p style=\'margin-top:12px;\'>Cela protège vos ports contre les intrusions</p>')">Voir les commandes &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tip 7 -->
+          <div class="item-card reveal" data-category="network">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Securite</span>
+                <span>Reseau</span>
+              </div>
+              <h3 class="item-card-title">Risque d'attaque reseau</h3>
+            </div>
+            <div class="item-card-body">
+              <p>ACtiver le pare-feu windows avec :</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Amelioration de la reactivite du PC', '<h4>Séquence de Réinitialisation CMD :</h4><p style=\'margin:12px 0;\'>Ouvrez l\'Invite de commandes (CMD) en tant qu\'administrateur et exécutez successivement ces lignes :</p><pre style=\'background:#09090b; color:#fff; padding:16px; border-radius:8px; font-size:0.85rem;\'>sfc /scannow\nDISM /Online /Cleanup-Image /RestoreHealth\nclenmgr</pre><p style=\'margin-top:12px;\'>Redémarrez ensuite votre ordinateur pour permettre une bonne analyse et reparation du syteme.</p>')">Voir les commandes &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tip 8 -->
+          <div class="item-card reveal" data-category="network">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Securite</span>
+                <span>Windows</span>
+              </div>
+              <h3 class="item-card-title">Verifier si un fichier est reellement sur avant de l'ouvrir</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Avant d'ouvrir une piece jointe ou un fichier telecharge, verifier son extension, son origine et le scanner avec l'antivirus.</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Verificafier un fichier', '<h4>Top Raccourcis à Maîtriser</h4><ul style=\'margin-left:20px; margin-bottom:20px; line-height:1.8;\'><li><strong>Win + V :</strong> Ouvre l\'historique du presse-papier (copier-coller multiple).</li><li><strong>Win + Shift + S :</strong> Outil de capture d\'écran sélectif rapide.</li><li><strong>Ctrl + Shift + Esc :</strong> Ouvre directement le Gestionnaire des tâches.</li><li><strong>Win + L :</strong> Verrouille instantanément votre session de bureau.</li></ul>')">Voir la methode &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tip 9 -->
+          <div class="item-card reveal" data-category="network">
+            <div class="item-card-header">
+              <div class="item-card-meta">
+                <span class="item-card-tag">Depannage</span>
+                <span>Windows</span>
+              </div>
+              <h3 class="item-card-title">Identifier ou se situe une panne internet</h3>
+            </div>
+            <div class="item-card-body">
+              <p>Identifier ou se situe une panne internet avec ping et tracert. Tu peux determiner si le probleme vient de ton pc, de ton routeur ou d'un serveur distant.</p>
+              <div class="item-card-footer">
+                <button class="btn btn-outline" style="width:100%; text-align:center;" onclick="openModal('Situe une panne internet', '<h4>Séquence de Réinitialisation CMD :</h4><p style=\'margin:12px 0;\'>Ouvrez l\'Invite de commandes (CMD) en tant qu\'administrateur et exécutez successivement ces lignes :</p><pre style=\'background:#09090b; color:#fff; padding:16px; border-radius:8px; font-size:0.85rem;\'>ping 8.8.8.8\ntracert google.com\</pre><p style=\'margin-top:12px;\'>Redémarrez ensuite votre ordinateur pour permettre une bonne analyse et reparation du syteme.</p>')">Voir les commandes &rarr;</button>
               </div>
             </div>
           </div>
