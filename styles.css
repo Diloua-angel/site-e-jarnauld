@@ -492,7 +492,7 @@ button, input, select, textarea {
   background-image: url('en/home.jpg');
   background-size: cover;
   background-position: center 35%;
-  filter: blur(6px) brightness(0.72) contrast(1);
+  filter: blur(2px) brightness(0.86) contrast(1);
   transform: scale(1.04);
   z-index: 0;
   pointer-events: none;
@@ -1132,7 +1132,7 @@ textarea.form-control {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(9, 9, 11, 0.72);
+  background: rgba(9, 9, 11, 0.45);
   z-index: -1;
 }
 
