@@ -14,6 +14,12 @@
 
   <!-- Stylesheet unifiée -->
   <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+  <script>
+    Weglot.initialize({
+      api_key: 'wg_8e8db3d8407ce8fbbb3c98f7818943c52'
+    });
+  </script>
 </head>
 <body>
 
@@ -163,84 +169,131 @@
           <div style="background-color: var(--bg); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
             <h2 class="section-title" style="font-size: 1.75rem; margin-bottom: 24px;">Envoyer un Message</h2>
 
-            <form id="contactForm" action="traitement_contact.php" method="POST">
+          <!-- 1. Inclusion du SDK EmailJS -->
+<form id="contactForm" method="POST">
+
+    <!-- Clé d'accès Web3Forms -->
+    <input type="hidden" name="access_key" value="5a2a0f5f-11f8-42b1-90f9-b939036fa110">
+
+    <!-- Sujet de l'e-mail -->
+    <input type="hidden" name="subject" value="Nouveau message de contact">
+
+    <!-- Protection anti-spam (Honeypot masqué) -->
+    <input type="checkbox" name="botcheck" style="display: none;">
 
     <div class="form-row">
         <div class="form-group">
             <label class="form-label" for="fullname">Nom Complet *</label>
-            <input 
-                type="text" 
-                id="fullname" 
-                name="fullname"
-                class="form-control" 
-                placeholder="Jean Dupont" 
-                required>
+            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Jean Dupont" required>
         </div>
 
         <div class="form-group">
             <label class="form-label" for="email">Adresse Email *</label>
-            <input 
-                type="email" 
-                id="email" 
-                name="email"
-                class="form-control" 
-                placeholder="jean@entreprise.cm" 
-                required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="jean@entreprise.cm" required>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
             <label class="form-label" for="phone">Numéro de Téléphone *</label>
-            <input 
-                type="tel" 
-                id="phone" 
-                name="phone"
-                class="form-control" 
-                placeholder="+237 6XX XX XX XX" 
-                required>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+237 6XX XX XX XX" required>
         </div>
 
         <div class="form-group">
             <label class="form-label" for="subject">Objet / Demande *</label>
-            <select 
-                id="subject" 
-                name="subject"
-                class="form-control" 
-                required>
-
+            <select id="subject" name="service_type" class="form-control" required>
                 <option value="">Sélectionnez un sujet...</option>
-                <option value="devis">Demande de Devis Général</option>
-                <option value="audit">Audit de Cybersécurité</option>
-                <option value="infogerance">Infogérance & Support 24/7</option>
-                <option value="cablage">Câblage & Réseaux</option>
-                <option value="autre">Autre Demande</option>
-
+                <option value="Demande de Devis Général">Demande de Devis Général</option>
+                <option value="Audit de Cybersécurité">Audit de Cybersécurité</option>
+                <option value="Infogérance & Support 24/7">Infogérance & Support 24/7</option>
+                <option value="Câblage & Réseaux">Câblage & Réseaux</option>
+                <option value="Autre Demande">Autre Demande</option>
             </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="form-label" for="message">
-            Message ou détails de votre besoin *
-        </label>
-
-        <textarea 
-            id="message" 
-            name="message"
-            class="form-control" 
-            placeholder="Décrivez votre projet ou la panne rencontrée..." 
-            required></textarea>
+        <label class="form-label" for="message">Message ou détails de votre besoin *</label>
+        <textarea id="message" name="message" class="form-control" placeholder="Décrivez votre projet..." required></textarea>
     </div>
 
-    <button 
-        type="submit" 
-        class="btn btn-primary" 
-        style="width: 100%; padding: 14px; font-size: 1rem;">
+    <button type="submit" id="btnSubmit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
         Envoyer le Message &rarr;
     </button>
 
+    <!-- Message de retour (Succès / Erreur) -->
+    <div id="formResult" style="margin-top: 15px; display: none;"></div>
+
 </form>
+
+<!-- Script AJAX -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const result = document.getElementById('formResult');
+    const btnSubmit = document.getElementById('btnSubmit');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 1. Bouton en état de chargement
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Envoi en cours...';
+        result.style.display = 'none';
+
+        // 2. Préparation des données du formulaire
+        const formData = new FormData(form);
+
+        // 3. Envoi asynchrone à Web3Forms
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(async (response) => {
+            let jsonResponse = await response.json();
+            
+            if (response.status === 200 && jsonResponse.success) {
+                // Affichage du message de succès
+                result.style.display = 'block';
+                result.style.color = '#155724';
+                result.style.backgroundColor = '#d4edda';
+                result.style.border = '1px solid #c3e6cb';
+                result.style.padding = '12px';
+                result.style.borderRadius = '6px';
+                result.textContent = 'Votre message a été envoyé avec succès !';
+                form.reset();
+            } else {
+                // Affichage de l'erreur API
+                console.error('Erreur Web3Forms:', jsonResponse);
+                result.style.display = 'block';
+                result.style.color = '#721c24';
+                result.style.backgroundColor = '#f8d7da';
+                result.style.border = '1px solid #f5c6cb';
+                result.style.padding = '12px';
+                result.style.borderRadius = '6px';
+                result.textContent = jsonResponse.message || 'Une erreur est survenue lors de l\'envoi.';
+            }
+        })
+        .catch(error => {
+            console.error('Erreur Réseau:', error);
+            result.style.display = 'block';
+            result.style.color = '#721c24';
+            result.style.backgroundColor = '#f8d7da';
+            result.style.border = '1px solid #f5c6cb';
+            result.style.padding = '12px';
+            result.style.borderRadius = '6px';
+            result.textContent = 'Impossible d\'envoyer le message. Vérifiez votre connexion Internet.';
+        })
+        .finally(() => {
+            // Réinitialisation du bouton
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = 'Envoyer le Message &rarr;';
+        });
+    });
+});
+</script>
           </div>
         </div>
       </div>
