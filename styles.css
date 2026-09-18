@@ -867,7 +867,7 @@ button, input, select, textarea {
   width: 100% !important;
   height: 180px !important;
   object-fit: contain;
-  object-position: left center;
+  object-position: center;
   padding: 10px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
