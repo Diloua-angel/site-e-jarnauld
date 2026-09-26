@@ -14,6 +14,12 @@
 
   <!-- Stylesheet unifiée -->
   <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+  <script>
+    Weglot.initialize({
+      api_key: 'wg_8e8db3d8407ce8fbbb3c98f7818943c52'
+    });
+  </script>
 </head>
 <body>
 
@@ -43,10 +49,7 @@
         </nav>
 
         <div class="nav-actions">
-          <div class="lang-switcher" aria-label="Sélecteur de langue">
-            <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
-            <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
-          </div>
+          
           <a href="contact.html" class="btn btn-primary" data-i18n="devis">Demander un devis</a>
           <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -123,8 +126,8 @@
       <div class="container">
         <div class="services-grid">
           <!-- Service 1 -->
-          <div class="service-card reveal" data-category="security">
-            <img src="pen_testing & Audit.png" alt="Pen-Testing" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-audit" data-category="security">
+            <img src="pen .jpeg" alt="Pen-Testing et audit cyber" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Pen-Testing & Audit Cyber</h3>
             <p class="service-desc">Simulations d'attaques réelles (boîte noire / blanche), audit de code, analyse de vulnérabilités et plan de remédiation complet pour votre entreprise.</p>
             <div class="service-tags">
@@ -136,8 +139,8 @@
           </div>
 
           <!-- Service 2 -->
-          <div class="service-card reveal" data-category="cloud">
-            <img src="securitecloud&hybride1.png" alt="Cloud Security" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-cloud" data-category="cloud">
+            <img src="securi cloud.jpeg" alt="Sécurisation Cloud et hybride" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Sécurisation Cloud & Hybride</h3>
             <p class="service-desc">Protection et hardening de vos infrastructures Cloud AWS, Azure et hébergements privés localisés au Cameroun avec sauvegarde automatisée.</p>
             <div class="service-tags">
@@ -149,8 +152,8 @@
           </div>
 
           <!-- Service 3 -->
-          <div class="service-card reveal" data-category="cloud">
-            <img src="infogerance1.png" alt="Infogérance" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-infogerance" data-category="cloud">
+            <img src="infogerance compl.jpeg" alt="Infogérance informatique" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Infogérance Complète & Helpdesk</h3>
             <p class="service-desc">Externalisez la gestion de votre informatique : assistance utilisateurs 5j/7 ou 7j/7, gestion des licences et supervision des serveurs.</p>
             <div class="service-tags">
@@ -162,8 +165,8 @@
           </div>
 
           <!-- Service 4 -->
-          <div class="service-card reveal" data-category="infra">
-            <img src="maintenance_jarnauld.png" alt="Maintenance" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-maintenance" data-category="infra">
+            <img src="mainenance.jpeg" alt="Maintenance" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Maintenance Préventive</h3>
             <p class="service-desc">Planification de visites de contrôle régulières pour dépoussiérer les serveurs, vérifier les disques durs et prévenir l'usure matérielle.</p>
             <div class="service-tags">
@@ -175,8 +178,8 @@
           </div>
 
           <!-- Service 5 -->
-          <div class="service-card reveal" data-category="telecom">
-            <img src="telephonie_jarnauld.png" alt="Téléphonie" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-ip" data-category="telecom">
+            <img src="ip.png" alt="Téléphonie IP et télécoms" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Téléphonie IP & Télécoms</h3>
             <p class="service-desc">Installation de standards téléphoniques IP PBX (Asterisk/3CX), téléphones IP d'entreprise, trunks SIP et couplage téléphonie-informatique.</p>
             <div class="service-tags">
@@ -188,8 +191,8 @@
           </div>
 
           <!-- Service 6 -->
-          <div class="service-card reveal" data-category="infra">
-            <img src="reseau_jarnauld.png" alt="Réseaux" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-reseau" data-category="infra">
+            <img src="reseau infor.jpeg" alt="Réseaux" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Réseaux Informatiques & Wi-Fi</h3>
             <p class="service-desc">Conception, routage (Cisco/MikroTik), segmentation VLAN, sécurité Wi-Fi d'entreprise et liaisons VPN sécurisées entre vos sites.</p>
             <div class="service-tags">
@@ -201,11 +204,11 @@
           </div>
 
           <!-- Service 7 -->
-          <div class="service-card reveal" data-category="infra">
-            <img src="cablage_jarnauld.png" alt="Câblage Structuré" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-cablage" data-category="infra">
+            <img src="cablage & baie.jpeg" alt="Câblage Structuré" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Câblage Structuré & Baies</h3>
             <p class="service-desc">Tirage de câbles Ethernet réseau Cat6A/Cat7, déploiement de liaisons optiques, aménagement de baies de brassage et certification de liens.</p>
-            <div class="service-tags">
+            <div class="service-tags">   
               <span class="service-tag">Câblage</span>
               <span class="service-tag">Cat6A</span>
               <span class="service-tag">Fluke</span>
@@ -214,8 +217,8 @@
           </div>
 
           <!-- Service 8 -->
-          <div class="service-card reveal" data-category="telecom">
-            <img src="videosurveillance_jarnauld.png" alt="Vidéosurveillance" class="service-card-img" style="width: 350px; height: 450px;">
+          <div class="service-card reveal" id="service-video" data-category="telecom">
+            <img src="videosurveillance.jpeg" alt="Vidéosurveillance" class="service-card-img" style="width: 350px; height: 450px;">
             <h3 class="service-title">Vidéosurveillance & Contrôle d'Accès</h3>
             <p class="service-desc">Systèmes de caméras IP Ultra HD avec vision nocturne, enregistreurs NVR sécurisés, tourniquets et serrures biométriques centralisées.</p>
             <div class="service-tags">

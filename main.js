@@ -42,7 +42,63 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeDrawer);
   });
 
-  // 3. Scroll Reveal Observer
+  // 3. Carrousel des services
+  const servicesCarousel = document.getElementById('servicesCarousel');
+  if (servicesCarousel) {
+    const slides = [...servicesCarousel.querySelectorAll('.service-slide')];
+    const dots = [...servicesCarousel.querySelectorAll('.carousel-dot')];
+    const previousButton = servicesCarousel.querySelector('.carousel-arrow-prev');
+    const nextButton = servicesCarousel.querySelector('.carousel-arrow-next');
+    let activeSlide = 0;
+    let autoplay;
+
+    function showSlide(index) {
+      activeSlide = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === activeSlide;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
+      });
+      dots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeSlide;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', String(isActive));
+      });
+    }
+
+    function startAutoplay() {
+      clearInterval(autoplay);
+      autoplay = setInterval(() => showSlide(activeSlide + 1), 3000);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplay);
+    }
+
+    previousButton.addEventListener('click', () => {
+      showSlide(activeSlide - 1);
+      startAutoplay();
+    });
+    nextButton.addEventListener('click', () => {
+      showSlide(activeSlide + 1);
+      startAutoplay();
+    });
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      showSlide(Number(dot.dataset.slideTo));
+      startAutoplay();
+    }));
+    servicesCarousel.addEventListener('mouseenter', stopAutoplay);
+    servicesCarousel.addEventListener('mouseleave', startAutoplay);
+    servicesCarousel.addEventListener('focusin', stopAutoplay);
+    servicesCarousel.addEventListener('focusout', startAutoplay);
+    servicesCarousel.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') showSlide(activeSlide - 1);
+      if (event.key === 'ArrowRight') showSlide(activeSlide + 1);
+    });
+    startAutoplay();
+  }
+
+  // 4. Scroll Reveal Observer
   const revealElements = document.querySelectorAll('.reveal');
   if (revealElements.length > 0 && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {

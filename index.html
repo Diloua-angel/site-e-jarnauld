@@ -14,6 +14,13 @@
 
   <!-- Stylesheet unifiée -->
   <link rel="stylesheet" href="styles.css">
+
+  <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+<script>
+    Weglot.initialize({
+        api_key: 'wg_8e8db3d8407ce8fbbb3c98f7818943c52'
+    });
+</script>
 </head>
 <body>
 
@@ -23,7 +30,7 @@
       <div class="nav-inner">
         <a class="brand" href="index.html" aria-label="E-JARNAULD SOFT">
           <div class="brand-logo">
-            <img src="logo.png" alt="E-JARNAULD SOFT Logo">
+            <img src="LOGO EJS.jpeg" alt="E-JARNAULD SOFT Logo">
           </div>
           <div class="brand-text">
             <span class="brand-name">E-JARNAULD SOFT</span>
@@ -43,10 +50,7 @@
         </nav>
 
         <div class="nav-actions">
-          <div class="lang-switcher" aria-label="Sélecteur de langue">
-            <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
-            <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
-          </div>
+         
           <a href="contact.html" class="btn btn-primary" data-i18n="devis">Demander un devis</a>
           <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -157,7 +161,7 @@
     </section>
 
     <!-- CORE SERVICES SECTION -->
-    <section class="section section-surface">
+    <section class="section section-surface services-section">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-badge">
@@ -168,83 +172,82 @@
           <p class="section-desc" data-i18n="services_sub">Des services d'ingénierie fiables pour protéger, connecter et propulser votre entreprise.</p>
         </div>
 
-        <div class="services-grid">
-          <!-- Service 1 -->
-          <div class="service-card reveal">
-            <img src="pen_testing & Audit.png" alt="Pen-Testing" class="service-card-img" style="width: 350px; height: 450px;">
-            <h3 class="service-title">Pen-Testing & Audit Cyber</h3>
-            <p class="service-desc">Tests d'intrusion avancés, détection des vulnérabilités critiques, rapports de conformité et hardening de vos réseaux.</p>
-            <div class="service-tags">
-              <span class="service-tag">Sécurité</span>
-              <span class="service-tag">Audit</span>
-              <span class="service-tag">Pentest</span>
-            </div>
-            <a href="services.html" class="service-link">Voir les détails &rarr;</a>
+        <div class="services-carousel reveal" id="servicesCarousel" aria-label="Nos services">
+          <div class="services-slides">
+            <article class="service-slide is-active" data-slide="0" aria-hidden="false">
+              <img src="infogerance compl.jpeg" alt="Infogérance complète">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Support IT</span>
+                <h3 class="service-title">Infogérance Complète & Helpdesk</h3>
+                <p class="service-desc">Confiez la gestion quotidienne de votre parc à une équipe disponible et réactive.</p>
+                <a href="services.html#service-infogerance" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
+            <article class="service-slide" data-slide="1" aria-hidden="true">
+              <img src="pen .jpeg" alt="Pen-testing et audit cyber">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Sécurité</span>
+                <h3 class="service-title">Pen-Testing & Audit Cyber</h3>
+                <p class="service-desc">Identifiez les vulnérabilités critiques et renforcez durablement la protection de votre entreprise.</p>
+                <a href="services.html#service-audit" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
+            <article class="service-slide" data-slide="2" aria-hidden="true">
+              <img src="reseau infor.jpeg" alt="Réseau informatique">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Infrastructure</span>
+                <h3 class="service-title">Réseaux Informatiques & Wi-Fi</h3>
+                <p class="service-desc">Concevez un réseau performant, sécurisé et adapté à tous vos usages professionnels.</p>
+                <a href="services.html#service-reseau" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
+            <article class="service-slide" data-slide="3" aria-hidden="true">
+              <img src="securi cloud.jpeg" alt="Sécurisation cloud et hybride">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Cloud</span>
+                <h3 class="service-title">Sécurisation Cloud & Hybride</h3>
+                <p class="service-desc">Protégez vos environnements cloud, vos sauvegardes et vos données stratégiques.</p>
+                <a href="services.html#service-cloud" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
+            <article class="service-slide" data-slide="4" aria-hidden="true">
+              <img src="videosurveillance.jpeg" alt="Vidéosurveillance et contrôle d'accès">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Sécurité physique</span>
+                <h3 class="service-title">Vidéosurveillance & Contrôle d'Accès</h3>
+                <p class="service-desc">Sécurisez vos locaux grâce à une surveillance IP et un contrôle des accès centralisé.</p>
+                <a href="services.html#service-video" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
+            <article class="service-slide" data-slide="5" aria-hidden="true">
+              <img src="cablage & baie.jpeg" alt="Câblage structuré et baies réseau">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Infrastructure</span>
+                <h3 class="service-title">Câblage Structuré & Baies</h3>
+                <p class="service-desc">Déployez une infrastructure réseau propre, certifiée et prête à évoluer.</p>
+                <a href="services.html#service-cablage" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
+            <article class="service-slide" data-slide="6" aria-hidden="true">
+              <img src="mainenance.jpeg" alt="Maintenance informatique">
+              <div class="service-slide-content">
+                <span class="service-slide-kicker">Infrastructure</span>
+                <h3 class="service-title">Maintenance Préventive</h3>
+                <p class="service-desc">Prévenez les pannes et optimisez durablement les performances de vos équipements.</p>
+                <a href="services.html#service-maintenance" class="service-link">Voir plus &rarr;</a>
+              </div>
+            </article>
           </div>
-
-          <!-- Service 2 -->
-          <div class="service-card reveal">
-            <img src="securitecloud&hybride1.png" alt="Cloud Security" class="service-card-img" style="width: 350px; height: 450px;">
-            <h3 class="service-title">Sécurisation Cloud & Hybride</h3>
-            <p class="service-desc">Protection continue de vos environnements Cloud (AWS, Azure, serveurs privés) et chiffrement de vos données clés.</p>
-            <div class="service-tags">
-              <span class="service-tag">Cloud</span>
-              <span class="service-tag">Backup</span>
-              <span class="service-tag">Chiffrement</span>
-            </div>
-            <a href="services.html" class="service-link">Voir les détails &rarr;</a>
-          </div>
-
-          <!-- Service 3 -->
-          <div class="service-card reveal">
-            <img src="infogerance1.png" alt="Infogérance" class="service-card-img" style="width: 350px; height: 450px;">
-            <h3 class="service-title">Infogérance Complète & Helpdesk</h3>
-            <p class="service-desc">Gestion déléguée globale de votre parc informatique, assistance utilisateur réactive et mises à jour de sécurité préventives.</p>
-            <div class="service-tags">
-              <span class="service-tag">Managed Services</span>
-              <span class="service-tag">Helpdesk</span>
-              <span class="service-tag">24/7</span>
-            </div>
-            <a href="services.html" class="service-link">Voir les détails &rarr;</a>
-          </div>
-
-          <!-- Service 4 -->
-          <div class="service-card reveal">
-            <img src="maintenance_jarnauld.png" alt="Maintenance" class="service-card-img" style="width: 350px; height: 450px;">
-            <h3 class="service-title">Maintenance Préventive</h3>
-            <p class="service-desc">Contrôles périodiques de santé système, élimination des pannes récurrentes et optimisation des performances de vos serveurs.</p>
-            <div class="service-tags">
-              <span class="service-tag">Maintenance</span>
-              <span class="service-tag">Diagnostic</span>
-              <span class="service-tag">SLA</span>
-            </div>
-            <a href="services.html" class="service-link">Voir les détails &rarr;</a>
-          </div>
-
-          <!-- Service 5 -->
-          <div class="service-card reveal">
-            <img src="telephonie_jarnauld.png" alt="Téléphonie" class="service-card-img" style="width: 350px; height: 450px;">
-            <h3 class="service-title">Téléphonie IP & Télécoms</h3>
-            <p class="service-desc">Standards téléphoniques VoIP modernes, files d'attente intelligentes, enregistrement d'appels et intégration CRM d'entreprise.</p>
-            <div class="service-tags">
-              <span class="service-tag">VoIP</span>
-              <span class="service-tag">Télécoms</span>
-              <span class="service-tag">SIP</span>
-            </div>
-            <a href="services.html" class="service-link">Voir les détails &rarr;</a>
-          </div>
-
-          <!-- Service 6 -->
-          <div class="service-card reveal">
-            <img src="cablage_jarnauld.png" alt="Câblage Structuré" class="service-card-img" style="width: 350px; height: 450px;">
-            <h3 class="service-title">Câblage Structuré & Baies</h3>
-            <p class="service-desc">Installation certifiée de réseaux haut débit Cat6A, baies de brassage, fibre optique et testeurs Fluke professionnels.</p>
-            <div class="service-tags">
-              <span class="service-tag">Câblage</span>
-              <span class="service-tag">Cat6A</span>
-              <span class="service-tag">Fibre Optique</span>
-            </div>
-            <a href="services.html" class="service-link">Voir les détails &rarr;</a>
+          <button class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Service précédent">&#8592;</button>
+          <button class="carousel-arrow carousel-arrow-next" type="button" aria-label="Service suivant">&#8594;</button>
+          <div class="carousel-dots" role="tablist" aria-label="Choisir un service">
+            <button class="carousel-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Infogérance" data-slide-to="0"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Audit cyber" data-slide-to="1"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Réseau informatique" data-slide-to="2"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Sécurité cloud" data-slide-to="3"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Vidéosurveillance" data-slide-to="4"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Câblage" data-slide-to="5"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Maintenance" data-slide-to="6"></button>
           </div>
         </div>
       </div>
