@@ -19,7 +19,7 @@
       stats_sla: 'Disponibilité SLA',
       stats_exp: 'Années d\'Excellence',
       stats_inter: 'Délai d\'intervention moyen',
-      footer_slogan: 'Cabinet d\'ingénierie informatique et de cybersécurité basé à Akwa, Douala. Solutions sur-mesure pour PME et grandes institutions.',
+      footer_slogan: 'Cabinet d\'ingénierie informatique et de cybersécurité basé au Marché Ndogpassi, Douala. Solutions sur-mesure pour PME et grandes institutions.',
       rights: 'Tous droits réservés.',
       cgv_title: 'Conditions Générales de Vente (CGV)',
       conf_title: 'Politique de Confidentialité'
@@ -43,7 +43,7 @@
       stats_sla: 'SLA Availability',
       stats_exp: 'Years of Excellence',
       stats_inter: 'Average Response Time',
-      footer_slogan: 'IT engineering and cybersecurity firm based in Akwa, Douala. Tailored solutions for SMEs and institutions.',
+      footer_slogan: 'IT engineering and cybersecurity firm based in Marché Ndogpassi, Douala. Tailored solutions for SMEs and institutions.',
       rights: 'All rights reserved.',
       cgv_title: 'Terms of Service',
       conf_title: 'Privacy Policy'
@@ -54,7 +54,7 @@
     // English mapping for common UI strings
     'Solutions Informatiques': 'IT Solutions',
     'Basé à Douala, Cameroun.': 'Based in Douala, Cameroon.',
-    'Basé à Akwa, Douala': 'Based in Akwa, Douala',
+    'Basé à Marché Ndogpassi, Douala': 'Based in Marché Ndogpassi, Douala',
     'Demander un Devis': 'Request a Quote',
     'Appeler / WhatsApp': 'Call / WhatsApp',
     'Ingénierie IT & Cybersécurité': 'IT Engineering & Cybersecurity',

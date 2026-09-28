@@ -735,14 +735,16 @@ button, input, select, textarea {
 .service-slide-content {
   display: block;
   position: absolute;
-  left: clamp(20px, 5vw, 72px);
-  bottom: clamp(20px, 5vw, 56px);
+  left: clamp(16px, 3vw, 40px);
+  bottom: clamp(16px, 3vw, 32px);
   z-index: 1;
-  width: min(560px, calc(100% - 40px));
-  padding: clamp(16px, 2.5vw, 28px);
+  width: min(390px, calc(100% - 32px));
+  max-height: 200px;
+  overflow: hidden;
+  padding: 12px 16px;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius-md);
-  background: rgba(9, 9, 11, 0.82);
+  background: rgba(9, 9, 11, 0.68);
   box-shadow: 0 12px 30px rgba(9, 9, 11, 0.18);
   backdrop-filter: blur(5px);
 }
@@ -757,19 +759,24 @@ button, input, select, textarea {
 
 .service-slide .service-title {
   color: var(--text-white);
-  margin-top: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
 }
 
 .service-slide .service-desc {
   color: #E5E7EB;
-  max-width: 560px;
+  max-width: 390px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 .service-slide .service-link {
   display: inline-flex;
   align-items: center;
   margin-top: 4px;
-  padding: 9px 16px;
+  padding: 7px 12px;
   border: 1px solid var(--primary);
   border-radius: var(--radius-sm);
   background: var(--primary);
@@ -1534,40 +1541,44 @@ textarea.form-control {
     min-height: 0;
   }
   .services-slides {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
   }
   .service-slide > img {
-    inset: 10px;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
+    inset: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
   }
   .service-slide-content {
     left: 12px;
-    bottom: 12px;
+    bottom: 8px;
     width: calc(100% - 24px);
-    padding: 12px 14px;
+    max-height: 132px;
+    overflow: hidden;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(9, 9, 11, 0.68);
   }
   .service-slide-kicker {
-    font-size: 0.65rem;
+    font-size: 0.58rem;
   }
   .service-slide .service-title {
-    font-size: 1rem;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    font-size: 0.86rem;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
   .service-slide .service-desc {
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    margin-bottom: 8px;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    margin-bottom: 4px;
+    font-size: 0.66rem;
+    line-height: 1.25;
   }
   .service-slide .service-link {
-    padding: 7px 12px;
-    font-size: 0.78rem;
+    padding: 5px 9px;
+    font-size: 0.68rem;
   }
   .service-card {
     padding: 16px;
@@ -1586,11 +1597,13 @@ textarea.form-control {
     font-size: 0.8rem;
   }
   .carousel-arrow {
-    top: 24px;
+    top: 14px;
+    width: 38px;
+    height: 38px;
     transform: none;
   }
-  .carousel-arrow-prev { left: auto; right: 72px; }
-  .carousel-arrow-next { right: 18px; }
+  .carousel-arrow-prev { left: auto; right: 64px; }
+  .carousel-arrow-next { right: 14px; }
   .hero-stats {
     grid-template-columns: 1fr;
   }
