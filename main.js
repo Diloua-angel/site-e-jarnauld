@@ -210,29 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Formulaire de Contact avec Toast de Confirmation
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Envoi en cours...';
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        contactForm.reset();
-        const currentLang = localStorage.getItem('site-language') || 'fr';
-        const msg = currentLang === 'en' 
-          ? 'Thank you! Your request has been sent successfully. Our team will contact you within 2 hours.'
-          : 'Merci ! Votre demande a été envoyée avec succès. Notre équipe vous recontactera sous 2 heures.';
-        window.showToast(msg);
-      }, 1000);
-    });
-  }
-
   // Initialiser i18n s'il est disponible
   if (window.i18n && typeof window.i18n.initI18n === 'function') {
     window.i18n.initI18n();

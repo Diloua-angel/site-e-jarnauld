@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-JARNAULD SOFT — Solutions Informatiques & Cybersécurité (Douala)</title>
+  <title data-i18n="pageTitle.home">E-JARNAULD SOFT — Solutions Informatiques & Cybersécurité (Douala)</title>
   <meta name="description" content="E-JARNAULD SOFT : cabinet d'ingénierie informatique et de cybersécurité à Douala, Cameroun. Sécurité, infogérance, télécoms, réseaux et câblage structuré.">
   <link rel="icon" type="image/png" href="logo.png">
 
@@ -14,14 +14,7 @@
 
   <!-- Stylesheet unifiée -->
   <link rel="stylesheet" href="styles.css">
-
-  <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
-<script>
-    Weglot.initialize({
-        api_key: 'wg_8e8db3d8407ce8fbbb3c98f7818943c52'
-    });
-</script>
-</head>
+  </head>
 <body>
 
   <!-- Navbar Fixe -->
@@ -40,17 +33,21 @@
 
         <nav aria-label="Navigation principale">
           <ul class="nav-links">
-            <li><a href="index.html" class="nav-link is-active" data-i18n-link="accueil">Accueil</a></li>
-            <li><a href="about.html" class="nav-link" data-i18n-link="apropos">À Propos</a></li>
-            <li><a href="services.html" class="nav-link" data-i18n-link="services">Services</a></li>
-            <li><a href="actualites.html" class="nav-link" data-i18n-link="actualites">Actualités</a></li>
-            <li><a href="astuces.html" class="nav-link" data-i18n-link="astuces">Astuces</a></li>
-            <li><a href="contact.html" class="nav-link" data-i18n-link="contact">Contact</a></li>
+            <li><a href="index.html" class="nav-link is-active" data-i18n="accueil">Accueil</a></li>
+            <li><a href="about.html" class="nav-link" data-i18n="apropos">À Propos</a></li>
+            <li><a href="services.html" class="nav-link" data-i18n="services">Services</a></li>
+            <li><a href="actualites.html" class="nav-link" data-i18n="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="nav-link" data-i18n="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="nav-link" data-i18n="contact">Contact</a></li>
           </ul>
         </nav>
 
         <div class="nav-actions">
          
+          <div class="lang-switcher" aria-label="Sélecteur de langue" data-i18n-aria-label="lang.select">
+            <button type="button" class="lang-btn" data-lang-toggle="fr" aria-pressed="true">FR</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en" aria-pressed="false">EN</button>
+          </div>
           <a href="contact.html" class="btn btn-primary" data-i18n="devis">Demander un devis</a>
           <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -70,7 +67,7 @@
     <div class="drawer-header">
       <div class="brand">
         <div class="brand-logo">
-          <img src="logo.png" alt="Logo">
+          <img src="LOGO EJS.jpeg" alt="Logo">
         </div>
         <div class="brand-text">
           <span class="brand-name" style="color:#fff;">E-JARNAULD SOFT</span>
@@ -80,12 +77,12 @@
       <button class="drawer-close" id="drawerClose" aria-label="Fermer le menu">&times;</button>
     </div>
     <ul class="drawer-links">
-      <li><a href="index.html" class="drawer-link is-active" data-i18n-link="accueil">Accueil</a></li>
-      <li><a href="about.html" class="drawer-link" data-i18n-link="apropos">À Propos</a></li>
-      <li><a href="services.html" class="drawer-link" data-i18n-link="services">Services</a></li>
-      <li><a href="actualites.html" class="drawer-link" data-i18n-link="actualites">Actualités</a></li>
-      <li><a href="astuces.html" class="drawer-link" data-i18n-link="astuces">Astuces</a></li>
-      <li><a href="contact.html" class="drawer-link" data-i18n-link="contact">Contact</a></li>
+      <li><a href="index.html" class="drawer-link is-active" data-i18n="accueil">Accueil</a></li>
+      <li><a href="about.html" class="drawer-link" data-i18n="apropos">À Propos</a></li>
+      <li><a href="services.html" class="drawer-link" data-i18n="services">Services</a></li>
+      <li><a href="actualites.html" class="drawer-link" data-i18n="actualites">Actualités</a></li>
+      <li><a href="astuces.html" class="drawer-link" data-i18n="astuces">Astuces</a></li>
+      <li><a href="contact.html" class="drawer-link" data-i18n="contact">Contact</a></li>
     </ul>
     <div class="drawer-footer">
       <div class="lang-switcher" style="justify-content: center;">
@@ -106,8 +103,8 @@
               <span class="dot"></span>
               <span data-i18n="hero_kicker">IT Premium & Cybersécurité — Douala, Cameroun</span>
             </div>
-            <h1 class="hero-title" data-i18n="heroTitle">
-              Architecture Informatique de <span class="text-primary">Confiance</span>.
+            <h1 class="hero-title">
+              <span data-i18n="heroTitlePrefix">Architecture Informatique de </span><span class="text-primary" data-i18n="heroTitleHighlight">Confiance</span><span data-i18n="heroTitleSuffix">.</span>
             </h1>
             <p class="hero-desc" data-i18n="heroDesc">
               E-JARNAULD SOFT accompagne les entreprises au Cameroun avec des solutions IT haut de gamme : cybersécurité, infogérance, infrastructure, télécoms et câblage structuré.
@@ -175,7 +172,7 @@
         <div class="services-carousel reveal" id="servicesCarousel" aria-label="Nos services">
           <div class="services-slides">
             <article class="service-slide is-active" data-slide="0" aria-hidden="false">
-              <img src="infogerance_helpdesk_arche_j_aime_paysage.png" alt="Infogérance complète">
+              <img src="infogerance_helpdesk_arche_j_aime_paysage.png" data-src-en="img en/managed_it_helpdesk_english.png" alt="Infogérance complète">
               <div class="service-slide-content">
                 <span class="service-slide-kicker">Support IT</span>
                 <h3 class="service-title">Infogérance Complète & Helpdesk</h3>
@@ -184,7 +181,7 @@
               </div>
             </article>
             <article class="service-slide" data-slide="1" aria-hidden="true">
-              <img src="pentesting_audit_cyber.png" alt="Pen-testing et audit cyber">
+              <img src="pentesting_audit_cyber.png" data-src-en="img en/penetration_testing_cyber_audit_english.png" alt="Pen-testing et audit cyber">
               <div class="service-slide-content">
                 <span class="service-slide-kicker">Sécurité</span>
                 <h3 class="service-title">Pen-Testing & Audit Cyber</h3>
@@ -229,7 +226,7 @@
               </div>
             </article>
             <article class="service-slide" data-slide="6" aria-hidden="true">
-              <img src="maintenance_preventive.png" alt="Maintenance informatique">
+              <img src="maintenance_preventive.png" data-src-en="img en/preventive_maintenance_english.png" alt="Maintenance informatique">
               <div class="service-slide-content">
                 <span class="service-slide-kicker">Infrastructure</span>
                 <h3 class="service-title">Maintenance Préventive</h3>
@@ -335,7 +332,7 @@
         <div>
           <div class="brand" style="margin-bottom: 16px;">
             <div class="brand-logo" style="background:#fff;">
-              <img src="logo.png" alt="Logo">
+              <img src="LOGO EJS.jpeg" alt="Logo">
             </div>
             <span class="footer-brand-title">E-JARNAULD SOFT</span>
           </div>
@@ -347,12 +344,12 @@
         <div>
           <h4 class="footer-col-title">Navigation</h4>
           <ul class="footer-links">
-            <li><a href="index.html" class="footer-link" data-i18n-link="accueil">Accueil</a></li>
-            <li><a href="about.html" class="footer-link" data-i18n-link="apropos">À Propos</a></li>
-            <li><a href="services.html" class="footer-link" data-i18n-link="services">Services</a></li>
-            <li><a href="actualites.html" class="footer-link" data-i18n-link="actualites">Actualités</a></li>
-            <li><a href="astuces.html" class="footer-link" data-i18n-link="astuces">Astuces</a></li>
-            <li><a href="contact.html" class="footer-link" data-i18n-link="contact">Contact</a></li>
+            <li><a href="index.html" class="footer-link" data-i18n="accueil">Accueil</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n="apropos">À Propos</a></li>
+            <li><a href="services.html" class="footer-link" data-i18n="services">Services</a></li>
+            <li><a href="actualites.html" class="footer-link" data-i18n="actualites">Actualités</a></li>
+            <li><a href="astuces.html" class="footer-link" data-i18n="astuces">Astuces</a></li>
+            <li><a href="contact.html" class="footer-link" data-i18n="contact">Contact</a></li>
           </ul>
         </div>
 
@@ -387,7 +384,7 @@
   </footer>
 
   <!-- Scripts JavaScript -->
-  <script src="i18n.js"></script>
+  <script src="js/lang.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
