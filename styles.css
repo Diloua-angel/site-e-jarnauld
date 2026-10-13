@@ -502,7 +502,7 @@ button, input, select, textarea {
   content: '';
   position: absolute;
   inset: -18px;
-  background-image: url('en/home.jpg');
+  background-image: url('home.jpg');
   background-size: cover;
   background-position: center 35%;
   filter: blur(2px) brightness(0.86) contrast(1);
@@ -1299,13 +1299,17 @@ textarea.form-control {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-image: url('en/footer.png');
+  background-image: url('footer.png');
   background-size: cover;
   background-position: center 42%;
   background-color: var(--dark);
   color: var(--text-white);
   padding: 80px 0 30px;
   border-top: 1px solid var(--dark-border);
+}
+
+.language-image-hidden {
+  display: none !important;
 }
 
 .footer::before {

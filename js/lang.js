@@ -67,6 +67,17 @@
     }
   }
 
+  function applyImageLanguage(lang) {
+    document.querySelectorAll('img[data-src-fr]').forEach((image) => {
+      const source = lang === 'en' ? image.dataset.srcEn : image.dataset.srcFr;
+      image.classList.toggle('language-image-hidden', lang === 'en' && !source);
+
+      if (source && image.getAttribute('src') !== source) {
+        image.setAttribute('src', source);
+      }
+    });
+  }
+
   async function changeLanguage(lang) {
     if (!supportedLanguages.includes(lang)) {
       throw new RangeError(`Unsupported language: ${lang}`);
@@ -82,7 +93,6 @@
     currentPhrases = dictionary.phrases || {};
     document.documentElement.lang = lang;
     localStorage.setItem(storageKey, lang);
-
     document.querySelectorAll('[data-i18n], [data-i18n-link]').forEach((element) => {
       const key = element.dataset.i18n || element.dataset.i18nLink;
       const translation = dictionary.translations[key];
@@ -99,16 +109,7 @@
       if (translation !== undefined) element.setAttribute('aria-label', translation);
     });
 
-    document.querySelectorAll('img[data-src-en]').forEach((image) => {
-      if (!image.dataset.srcFr) {
-        image.dataset.srcFr = image.getAttribute('src');
-      }
-
-      const source = lang === 'en' ? image.dataset.srcEn : image.dataset.srcFr;
-      if (source && image.getAttribute('src') !== source) {
-        image.setAttribute('src', source);
-      }
-    });
+    applyImageLanguage(lang);
 
     translateTextNodes(currentPhrases);
 
@@ -138,6 +139,10 @@
     setLanguage: changeLanguage,
     getLanguage,
   };
+
+  const initialLanguage = getLanguage();
+  document.documentElement.lang = initialLanguage;
+  applyImageLanguage(initialLanguage);
 
   const contentObserver = new MutationObserver(() => {
     if (currentPhrases) translateTextNodes(currentPhrases);
